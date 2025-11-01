@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import './i18n'
 import { useTranslation } from 'react-i18next'
+import { Analytics } from '@vercel/analytics/react'
 import SetupForm from './components/SetupForm'
 import ChildPage from './pages/ChildPage'
 
@@ -79,6 +80,7 @@ export default function App() {
           </noscript>
         </div>
       </footer>
+      <Analytics />
     </div>
   )
 }
