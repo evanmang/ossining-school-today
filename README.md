@@ -1,4 +1,4 @@
-# OssiningSchoolToday
+# Ossining School Today
 
 View today's lunch menu and school day schedule for Ossining schools, with bilingual support (English/Spanish).
 
@@ -9,6 +9,7 @@ View today's lunch menu and school day schedule for Ossining schools, with bilin
 - 🌐 Bilingual support (English/Spanish)
 - 📱 Mobile-friendly design
 - 🔗 Shareable URLs for family members
+- 📱 iOS Widget generation for use with the Scriptable App.
 
 ## Local Development
 
