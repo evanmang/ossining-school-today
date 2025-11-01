@@ -106,13 +106,24 @@ function parseEntry(entry, locale){
 // Minimal serverless handler compatible with Vercel/Netlify functions
 module.exports = async function handler(req, res){
   const account = req.query?.account || req.body?.account
-  const dateStr = req.query?.date || req.body?.date || new Date().toISOString()
+  const dateStr = req.query?.date || req.body?.date
   const locale = req.query?.locale || req.query?.lang || req.body?.locale || 'en'
   if(!account) return res.status(400).json({ error: 'missing account parameter' })
   const parts = account.split('/')
   if(parts.length !== 3) return res.status(400).json({ error: 'account must be account/location/meal' })
   const [accountId, locationId, mealPeriodId] = parts
-  const date = new Date(dateStr)
+  
+  // Use Eastern Time (UTC-5) for default date if none provided
+  let date
+  if(dateStr){
+    date = new Date(dateStr)
+  } else {
+    // Get current time in Eastern Time (UTC-5, or UTC-4 during DST)
+    const now = new Date()
+    const utcOffset = now.getTimezoneOffset() * 60000
+    const easternOffset = -5 * 3600000 // EST is UTC-5
+    date = new Date(now.getTime() + utcOffset + easternOffset)
+  }
   const formattedDate = `${date.getMonth()+1}%20${date.getDate()}%20${date.getFullYear()}`
   const month = date.getMonth()+1
   const url = `https://apiservicelocators.fdmealplanner.com/api/v1/data-locator-webapi/3/meals?accountId=${accountId}&endDate=${formattedDate}&isActive=true&isStandalone&locationId=${locationId}&mealPeriodId=${mealPeriodId}&menuId=0&monthId=${month}&selectedDate=${formattedDate}&startDate=${formattedDate}&tenantId=3&timeOffset=300&year=${date.getFullYear()}`
