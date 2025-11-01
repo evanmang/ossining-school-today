@@ -20,7 +20,10 @@
     "PE": "Educación Física",
     "Art": "Arte",
     "Stream": "STREAM",
-    "Music": "Música"
+    "Music": "Música",
+    "Band": "Banda",
+    "Orchestra": "Orquesta",
+    "Chorus": "Coro"
   },
   "schedule": {
     "title": "Programa",

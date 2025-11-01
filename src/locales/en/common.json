@@ -20,7 +20,10 @@
     "PE": "PE",
     "Art": "Art",
     "Stream": "Stream",
-    "Music": "Music"
+    "Music": "Music",
+    "Band": "Band",
+    "Orchestra": "Orchestra",
+    "Chorus": "Chorus"
   },
   "schedule": {
     "title": "Schedule",

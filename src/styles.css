@@ -71,3 +71,52 @@ section, .child-page-card{background:#fff;border:1px solid #e6e9ee;border-radius
   .site-header h1{font-size:16px}
   .child-row{flex-direction:column}
 }
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root{
+    --bg: #1a1a1a;
+    --fg: #e8e8e8;
+  }
+  
+  body{background:#1a1a1a;color:#e8e8e8}
+  
+  section, .child-page-card{
+    background:#242424;
+    border-color:#3a3a3a;
+    box-shadow:0 1px 2px rgba(0,0,0,0.3)
+  }
+  
+  .setup label, .day-box label{color:#b8b8b8}
+  .setup > div > label{color:#d8d8d8}
+  
+  .setup input[type="text"], 
+  .setup input[type="email"], 
+  .setup input[type="number"], 
+  .setup select, 
+  .setup input[type="search"],
+  .field-box input,
+  .field-box select,
+  .share-box input{
+    background:#2a2a2a;
+    border-color:#3a3a3a;
+    color:#e8e8e8;
+  }
+  
+  .day-box, .field-box{
+    background:#2a2a2a;
+    border-color:#3a3a3a;
+  }
+  
+  .saved-profiles li{
+    border-color:#3a3a3a;
+  }
+  
+  .site-footer{
+    border-color:#3a3a3a;
+    color:#b8b8b8;
+  }
+  
+  a{color:#5b8aff}
+  a:visited{color:#8b7aff}
+}

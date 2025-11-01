@@ -92,6 +92,9 @@ export default function ChildPage(){
     Art: '🎨',
     Stream: '💻',
     Music: '🎵',
+    Band: '🎺',
+    Orchestra: '🎻',
+    Chorus: '🎤',
     Other: '✨'
   }
 

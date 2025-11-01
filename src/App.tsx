@@ -40,8 +40,8 @@ export default function App() {
       <header className="site-header">
         <div className="logo-wrap">
           <svg className="logo" viewBox="0 0 100 100" aria-hidden="true">
-            <circle cx="50" cy="50" r="42" fill="#6b46ff" />
-            <text x="50" y="58" textAnchor="middle" fontSize="54" fill="#fff" fontFamily="Inter, system-ui, -apple-system, 'Segoe UI', Roboto">O</text>
+            <rect x="8" y="8" width="84" height="84" rx="12" fill="#7B2D35" />
+            <text x="50" y="62" textAnchor="middle" fontSize="54" fill="#fff" fontWeight="600" fontFamily="Inter, system-ui, -apple-system, 'Segoe UI', Roboto">O</text>
           </svg>
           <h1>{t('header.title')}</h1>
         </div>

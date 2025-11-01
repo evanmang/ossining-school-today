@@ -134,6 +134,9 @@ export default function SetupForm(){
                 <label><input type="checkbox" checked={(specials[d]||[]).includes('Art')} onChange={()=>toggleSpecial(d,'Art')} /> {t('specials.Art')}</label>
                 <label><input type="checkbox" checked={(specials[d]||[]).includes('Stream')} onChange={()=>toggleSpecial(d,'Stream')} /> {t('specials.Stream')}</label>
                 <label><input type="checkbox" checked={(specials[d]||[]).includes('Music')} onChange={()=>toggleSpecial(d,'Music')} /> {t('specials.Music')}</label>
+                <label><input type="checkbox" checked={(specials[d]||[]).includes('Band')} onChange={()=>toggleSpecial(d,'Band')} /> {t('specials.Band')}</label>
+                <label><input type="checkbox" checked={(specials[d]||[]).includes('Orchestra')} onChange={()=>toggleSpecial(d,'Orchestra')} /> {t('specials.Orchestra')}</label>
+                <label><input type="checkbox" checked={(specials[d]||[]).includes('Chorus')} onChange={()=>toggleSpecial(d,'Chorus')} /> {t('specials.Chorus')}</label>
               </div>
               <div style={{marginTop:8}}>
                 <label>{t('schedule.other')}: <input value={custom[d]||''} onChange={e=>setCustomSpecial(d,e.target.value)} placeholder={t('setup.placeholderCustom')} /></label>
