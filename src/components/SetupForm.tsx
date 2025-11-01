@@ -163,6 +163,7 @@ export default function SetupForm(){
             <div className="share-box">
               <input readOnly value={resultUrl} />
               <button onClick={copyResult}>{copied ? t('buttons.copied') : t('buttons.copy')}</button>
+              <button onClick={() => window.open(resultUrl, '_blank')}>Open URL</button>
             </div>
           )}
         </div>
