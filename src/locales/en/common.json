@@ -1,0 +1,59 @@
+{
+  "header": {
+    "title": "OssiningSchoolToday"
+  },
+  "setup": {
+    "heading": "Setup",
+    "name": "Name",
+    "school": "School",
+    "meals": "Meals to show",
+    "create": "Create share URL",
+    "copied": "Copied to clipboard — open or share:",
+    "placeholderCustom": "Custom",
+    "savedProfiles": "Saved profiles"
+  },
+  "meals": {
+    "breakfast": "Breakfast",
+    "lunch": "Lunch"
+  },
+  "specials": {
+    "PE": "PE",
+    "Art": "Art",
+    "Stream": "Stream",
+    "Music": "Music"
+  },
+  "schedule": {
+    "title": "Schedule",
+    "day": "Day {{n}}",
+    "other": "Other"
+  },
+  "buttons": {
+    "copy": "Copy",
+    "copied": "Copied",
+    "refresh": "Refresh",
+    "retry": "Retry",
+    "load": "Load",
+    "delete": "Delete"
+  },
+  "child": {
+    "noProfile": "No profile provided. Use the setup page to create one.",
+    "today": "Today:",
+    "loadingDay": "Loading day...",
+    "noSchool": "No School Today",
+    "unknown": "Unknown",
+    "loadingMenus": "Loading menus...",
+    "errorLoading": "Error loading menus:",
+    "noMenuFor": "No menu available for {{meal}}."
+  },
+  "category": {
+    "entree": "Entree",
+    "side": "Side",
+    "beverage": "Beverage",
+    "fruit": "Fruit",
+    "other": "Other"
+  },
+  "footer": {
+    "copyright": "Copyright 2005 Evan Mangiamele",
+    "buy": "Buy me a coffee"
+  }
+}

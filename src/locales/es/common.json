@@ -1,0 +1,59 @@
+{
+  "header": {
+    "title": "OssiningSchoolToday"
+  },
+  "setup": {
+    "heading": "Configuración",
+    "name": "Nombre",
+    "school": "Escuela",
+    "meals": "Comidas a mostrar",
+    "create": "Crear URL para compartir",
+    "copied": "Copiado al portapapeles — abrir o compartir:",
+    "placeholderCustom": "Personalizado",
+    "savedProfiles": "Perfiles guardados"
+  },
+  "meals": {
+    "breakfast": "Desayuno",
+    "lunch": "Almuerzo"
+  },
+  "specials": {
+    "PE": "Educación Física",
+    "Art": "Arte",
+    "Stream": "STREAM",
+    "Music": "Música"
+  },
+  "schedule": {
+    "title": "Programa",
+    "day": "Día {{n}}",
+    "other": "Otro"
+  },
+  "buttons": {
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "refresh": "Actualizar",
+    "retry": "Reintentar",
+    "load": "Cargar",
+    "delete": "Eliminar"
+  },
+  "child": {
+    "noProfile": "No se proporcionó un perfil. Use la página de configuración para crear uno.",
+    "today": "Hoy:",
+    "loadingDay": "Cargando día...",
+    "noSchool": "No hay clases hoy",
+    "unknown": "Desconocido",
+    "loadingMenus": "Cargando menús...",
+    "errorLoading": "Error al cargar menús:",
+    "noMenuFor": "No hay menú disponible para {{meal}}."
+  },
+  "category": {
+    "entree": "Plato Principal",
+    "side": "Guarnición",
+    "beverage": "Bebida",
+    "fruit": "Fruta",
+    "other": "Otro"
+  },
+  "footer": {
+    "copyright": "Copyright 2005 Evan Mangiamele",
+    "buy": "Cómprame un café"
+  }
+}
