@@ -1,22 +1,41 @@
-# Ossining School Site (scaffold)
+# OssiningSchoolToday
 
-Minimal React + Vite + TypeScript scaffold for the Ossining School Tools project.
+View today's lunch menu and school day schedule for Ossining schools, with bilingual support (English/Spanish).
 
-Run locally:
+## Features
+
+- 📅 Daily school schedule and cycle day
+- 🍽️ Lunch and breakfast menus from FoodDirector
+- 🌐 Bilingual support (English/Spanish)
+- 📱 Mobile-friendly design
+- 🔗 Shareable URLs for family members
+
+## Local Development
 
 ```bash
-cd ossining-school-site
 npm install
 npm run dev
 ```
 
-What this scaffold includes:
-- Vite + React + TypeScript
-- Small API client stubs for fdmealplanner and the Google Apps Script day API
-- Basic `App.tsx` placeholder and styles
+Visit http://localhost:5173
 
-Next steps:
-- Implement the setup page and child profile routing
-- Implement serverless proxy for fdmealplanner if CORS blocks direct calls
-- Add profile encoding/sharing and caching
-- Add tests and CI
+## Tech Stack
+
+- **Frontend**: React + Vite + TypeScript
+- **Backend**: Serverless functions (Vercel)
+- **i18n**: react-i18next
+
+## Credits & Attribution
+
+Menu parsing functionality is based on [fdmealplanner](https://github.com/jdeath/fdmealplanner) by [@jdeath](https://github.com/jdeath). The original parser was adapted to add:
+- Spanish menu item support via `ComponentSpanishName` 
+- Serverless function compatibility
+- Enhanced caching and error handling
+
+## License
+
+Copyright 2025 Evan Mangiamele
+
+---
+
+Built with ❤️ for Ossining families

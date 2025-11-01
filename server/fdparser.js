@@ -1,3 +1,10 @@
+/**
+ * FoodDirector Menu Parser
+ * 
+ * Based on fdmealplanner by @jdeath: https://github.com/jdeath/fdmealplanner
+ * Extended with Spanish menu support and serverless compatibility
+ */
+
 const { XMLParser } = require('fast-xml-parser')
 
 function normalizeName(raw){
