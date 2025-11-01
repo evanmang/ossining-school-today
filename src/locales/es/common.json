@@ -7,7 +7,7 @@
     "name": "Nombre",
     "school": "Escuela",
     "meals": "Comidas a mostrar",
-    "create": "Crear URL para compartir",
+    "create": "Crear URL/Widget",
     "copied": "Copiado al portapapeles — abrir o compartir:",
     "placeholderCustom": "Personalizado",
     "savedProfiles": "Perfiles guardados"
@@ -37,6 +37,28 @@
     "retry": "Reintentar",
     "load": "Cargar",
     "delete": "Eliminar"
+  },
+  "widget": {
+    "create": "Crear Widget de iOS",
+    "title": "Generador de Widget de iOS",
+    "instructions": "Crea un widget de pantalla de inicio para tu iPhone o iPad usando la aplicación Scriptable:",
+    "step1": "Descarga la ",
+    "step1Link": "aplicación Scriptable",
+    "step1After": " de la App Store (gratis)",
+    "step2": "Copia o descarga el código generado a continuación",
+    "step3": "Crea un nuevo script en Scriptable y pega el código",
+    "step4": "Añade un widget de Scriptable a tu pantalla de inicio y selecciona tu script",
+    "size": "Tamaño del Widget",
+    "sizeSmall": "Pequeño (2×2)",
+    "sizeMedium": "Mediano (4×2)",
+    "sizeLarge": "Grande (4×4)",
+    "colorStart": "Inicio del Degradado",
+    "colorEnd": "Fin del Degradado",
+    "colorText": "Color del Texto",
+    "download": "Descargar",
+    "appStore": "Obtener Scriptable en la App Store",
+    "preview": "Vista Previa",
+    "previewNote": "(puede verse ligeramente diferente en el dispositivo)"
   },
   "child": {
     "noProfile": "No se proporcionó un perfil. Use la página de configuración para crear uno.",

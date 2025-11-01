@@ -7,7 +7,7 @@
     "name": "Name",
     "school": "School",
     "meals": "Meals to show",
-    "create": "Create share URL",
+    "create": "Create URL/Widget",
     "copied": "Copied to clipboard — open or share:",
     "placeholderCustom": "Custom",
     "savedProfiles": "Saved profiles"
@@ -37,6 +37,28 @@
     "retry": "Retry",
     "load": "Load",
     "delete": "Delete"
+  },
+  "widget": {
+    "create": "Create iOS Widget",
+    "title": "iOS Widget Generator",
+    "instructions": "Create a home screen widget for your iPhone or iPad using the Scriptable app:",
+    "step1": "Download the ",
+    "step1Link": "Scriptable app",
+    "step1After": " from the App Store (free)",
+    "step2": "Copy or download the generated code below",
+    "step3": "Create a new script in Scriptable and paste the code",
+    "step4": "Add a Scriptable widget to your home screen and select your script",
+    "size": "Widget Size",
+    "sizeSmall": "Small (2×2)",
+    "sizeMedium": "Medium (4×2)",
+    "sizeLarge": "Large (4×4)",
+    "colorStart": "Gradient Start",
+    "colorEnd": "Gradient End",
+    "colorText": "Text Color",
+    "download": "Download",
+    "appStore": "Get Scriptable on the App Store",
+    "preview": "Preview",
+    "previewNote": "(may appear slightly different on device)"
   },
   "child": {
     "noProfile": "No profile provided. Use the setup page to create one.",

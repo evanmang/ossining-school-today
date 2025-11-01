@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { encodeProfile, Profile, School, MealType } from '../utils/profile'
+import WidgetGenerator from './WidgetGenerator'
 
 const SCHOOLS: School[] = ['Park','Brookside','Claremont','Roosevelt','AMD','OHS']
   const MEALS: MealType[] = ['breakfast','lunch']
@@ -91,6 +92,13 @@ export default function SetupForm(){
 
   const [copied, setCopied] = React.useState(false)
 
+  // Clear URL when form data changes
+  useEffect(() => {
+    if (resultUrl) {
+      setResultUrl('')
+    }
+  }, [name, school, meals, specials, custom])
+
   function copyResult(){
     if(!resultUrl) return
     try{ navigator.clipboard?.writeText(resultUrl); setCopied(true); setTimeout(()=>setCopied(false),1600) }catch{}
@@ -160,14 +168,44 @@ export default function SetupForm(){
           ))
         )}
 
-        <div style={{gridColumn:'1 / -1', display:'flex', gap:8, alignItems:'center'}}>
+        <div style={{gridColumn:'1 / -1', display:'flex', gap:8, alignItems:'center', flexWrap:'wrap'}}>
           <button onClick={buildProfileAndUrl}>{t('setup.create')}</button>
           {resultUrl && (
-            <div className="share-box">
-              <input readOnly value={resultUrl} />
-              <button onClick={copyResult}>{copied ? t('buttons.copied') : t('buttons.copy')}</button>
-              <button onClick={() => window.open(resultUrl, '_blank')}>Open URL</button>
-            </div>
+            <>
+              <div className="share-box">
+                <input readOnly value={resultUrl} />
+                <button onClick={copyResult}>{copied ? t('buttons.copied') : t('buttons.copy')}</button>
+                <button onClick={() => window.open(resultUrl, '_blank')}>Open URL</button>
+              </div>
+              <WidgetGenerator 
+                profile={{
+                  name: name || 'child',
+                  school,
+                  meals,
+                  specials: (() => {
+                    const finalSpecials: Record<string,string[]> = {}
+                    for(const key of Object.keys(specials)){
+                      const arr = specials[key] || []
+                      finalSpecials[key] = arr.map(s => s === 'Other' ? (custom[key] || 'Other') : s)
+                    }
+                    return finalSpecials
+                  })()
+                }}
+                encodedConfig={encodeProfile({
+                  name: name || 'child',
+                  school,
+                  meals,
+                  specials: (() => {
+                    const finalSpecials: Record<string,string[]> = {}
+                    for(const key of Object.keys(specials)){
+                      const arr = specials[key] || []
+                      finalSpecials[key] = arr.map(s => s === 'Other' ? (custom[key] || 'Other') : s)
+                    }
+                    return finalSpecials
+                  })()
+                })}
+              />
+            </>
           )}
         </div>
 
