@@ -402,7 +402,7 @@ async function fetchMenu(date, mealType) {
             <li>{t('widget.step3')}</li>
             <li>
               {t('widget.step4')} (
-              <a href="#video-tutorial-placeholder" style={{color:'#2563eb', fontWeight:600}}>
+              <a href="https://youtube.com/shorts/A-qYNxFDkIo" target="_blank" rel="noreferrer" style={{color:'#2563eb', fontWeight:600}}>
                 {t('widget.step4Video')}
               </a>
               )
