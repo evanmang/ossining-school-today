@@ -71,6 +71,10 @@ export default function App() {
       <footer className="site-footer">
         <div>
           <small>{t('footer.copyright')}</small>
+          <br />
+          <a href="https://github.com/evanmang/ossining-school-today" target="_blank" rel="noreferrer" style={{fontSize:'0.85em', color:'#2563eb', textDecoration:'none'}}>
+            {t('footer.github')}
+          </a>
         </div>
         <div>
           <div ref={bmcRef} aria-hidden={false}></div>
