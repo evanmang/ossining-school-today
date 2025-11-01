@@ -41,7 +41,7 @@ export default function App() {
         <div className="logo-wrap">
           <svg className="logo" viewBox="0 0 100 100" aria-hidden="true">
             <rect x="8" y="8" width="84" height="84" rx="12" fill="#7B2D35" />
-            <text x="50" y="62" textAnchor="middle" fontSize="54" fill="#fff" fontWeight="600" fontFamily="Inter, system-ui, -apple-system, 'Segoe UI', Roboto">O</text>
+            <text x="50" y="52" textAnchor="middle" fontSize="54" fill="#fff" fontWeight="600" fontFamily="Inter, system-ui, -apple-system, 'Segoe UI', Roboto" dominantBaseline="middle">O</text>
           </svg>
           <h1>{t('header.title')}</h1>
         </div>
@@ -61,7 +61,7 @@ export default function App() {
           <ChildPage />
         ) : (
           <section>
-            <h2>Setup</h2>
+            <h2>{t('setup.heading')}</h2>
             <SetupForm />
           </section>
         ) }

@@ -1,6 +1,6 @@
 {
   "header": {
-    "title": "OssiningSchoolToday"
+    "title": "Ossining Escuela Hoy"
   },
   "setup": {
     "heading": "Configuración",
@@ -56,7 +56,7 @@
     "other": "Otro"
   },
   "footer": {
-    "copyright": "Copyright 2005 Evan Mangiamele",
+    "copyright": "© 2025 Evan Mangiamele",
     "buy": "Cómprame un café"
   }
 }

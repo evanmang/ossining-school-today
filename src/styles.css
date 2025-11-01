@@ -14,6 +14,7 @@ body{font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetic
 /* Main cards */
 main{display:block}
 section, .child-page-card{background:#fff;border:1px solid #e6e9ee;border-radius:10px;padding:14px;box-shadow:0 1px 2px rgba(16,24,40,0.04)}
+section h2{margin:0 0 12px 0}
 
 .child-row{display:flex;gap:12px;align-items:flex-start}
 
@@ -21,14 +22,16 @@ section, .child-page-card{background:#fff;border:1px solid #e6e9ee;border-radius
 .setup{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
 .setup > div{display:flex;flex-direction:column}
 .setup label{font-size:13px;color:#555;margin-bottom:6px}
-.setup-heading{grid-column:1 / -1;display:flex;flex-direction:column;align-items:center}
-.setup-heading h4{margin:6px 0;text-align:center}
+.setup-heading{grid-column:1 / -1;display:flex;flex-direction:column;align-items:center;margin-top:-8px}
+.setup-heading h4{margin:0 0 6px 0;text-align:center}
 .setup > div > label{font-size:15px;font-weight:600;color:#333}
 .day-box label{font-size:13px;font-weight:500;color:#555}
 .setup input[type="text"], .setup input[type="email"], .setup input[type="number"], .setup select, .setup input[type="search"]{padding:8px 10px;border:1px solid #e2e6ef;border-radius:8px;font-size:14px}
-.setup input[type="checkbox"]{margin-right:6px}
+.setup input[type="checkbox"]{margin-right:6px;vertical-align:middle}
+.setup > div > div > label{display:inline-flex;align-items:center;margin-right:14px}
 .setup h4{grid-column:1 / -1;margin:6px 0;text-align:center}
 .day-box{border:1px solid #f0f2f5;padding:10px;border-radius:8px;background:#fafbff}
+.day-box input[type="text"]{padding:8px 10px;border:1px solid #e2e6ef;border-radius:8px;font-size:14px}
 .day-box strong{display:block;margin-bottom:8px}
 .day-box label{display:inline-flex;align-items:center;margin-right:8px;font-size:13px}
 .day-box > div > label > input{margin-left:8px}
@@ -90,17 +93,33 @@ section, .child-page-card{background:#fff;border:1px solid #e6e9ee;border-radius
   .setup label, .day-box label{color:#b8b8b8}
   .setup > div > label{color:#d8d8d8}
   
+  /* Override the transparent background for field-box in dark mode */
+  .field-box input,
+  .field-box select{
+    background:#3a3a3a !important;
+  }
+  
   .setup input[type="text"], 
   .setup input[type="email"], 
   .setup input[type="number"], 
   .setup select, 
   .setup input[type="search"],
+  .setup input[type="checkbox"],
   .field-box input,
   .field-box select,
+  .day-box input[type="text"],
+  .day-box input[type="checkbox"],
   .share-box input{
-    background:#2a2a2a;
-    border-color:#3a3a3a;
+    background:#3a3a3a !important;
+    border-color:#4a4a4a;
     color:#e8e8e8;
+    filter: brightness(0.9);
+  }
+  
+  .setup input[type="checkbox"],
+  .day-box input[type="checkbox"],
+  .field-box input[type="checkbox"]{
+    accent-color:#555;
   }
   
   .day-box, .field-box{

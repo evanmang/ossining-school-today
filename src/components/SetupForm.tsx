@@ -99,19 +99,19 @@ export default function SetupForm(){
   return (
     <div className="child-page-card">
       <div className="setup">
-        <div className="field-box">
+        <div>
           <label>{t('setup.name')}</label>
-          <input value={name} onChange={e=>setName(e.target.value)} placeholder="Bianca" />
+          <input type="text" value={name} onChange={e=>setName(e.target.value)} placeholder="Student" />
         </div>
 
-        <div className="field-box">
+        <div>
           <label>{t('setup.school')}</label>
           <select value={school} onChange={e=>setSchool(e.target.value as School)}>
             {SCHOOLS.map(s => <option key={s} value={s}>{s}</option>)}
           </select>
         </div>
 
-        <div className="field-box">
+        <div>
           <label>{t('setup.meals')}</label>
           <div>
             {MEALS.map(m=> (
@@ -139,7 +139,7 @@ export default function SetupForm(){
                 <label><input type="checkbox" checked={(specials[d]||[]).includes('Chorus')} onChange={()=>toggleSpecial(d,'Chorus')} /> {t('specials.Chorus')}</label>
               </div>
               <div style={{marginTop:8}}>
-                <label>{t('schedule.other')}: <input value={custom[d]||''} onChange={e=>setCustomSpecial(d,e.target.value)} placeholder={t('setup.placeholderCustom')} /></label>
+                <label>{t('schedule.other')}: <input type="text" value={custom[d]||''} onChange={e=>setCustomSpecial(d,e.target.value)} placeholder={t('setup.placeholderCustom')} /></label>
               </div>
             </div>
           ))
@@ -154,7 +154,7 @@ export default function SetupForm(){
                 <label><input type="checkbox" checked={(specials[d]||[]).includes('Music')} onChange={()=>toggleSpecial(d,'Music')} /> {t('specials.Music')}</label>
               </div>
               <div style={{marginTop:8}}>
-                <label>{t('schedule.other')}: <input value={custom[d]||''} onChange={e=>setCustomSpecial(d,e.target.value)} placeholder={t('setup.placeholderCustom')} /></label>
+                <label>{t('schedule.other')}: <input type="text" value={custom[d]||''} onChange={e=>setCustomSpecial(d,e.target.value)} placeholder={t('setup.placeholderCustom')} /></label>
               </div>
             </div>
           ))
