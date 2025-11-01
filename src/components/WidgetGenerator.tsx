@@ -206,14 +206,10 @@ async function createWidget() {
       w.addSpacer(6)
     }
     
-    // Fetch menus
-    console.log("Config meals: " + JSON.stringify(config.meals))
-    
     // Fetch breakfast if enabled
     if (config.meals.includes("breakfast")) {
       w.addSpacer(2)
       const menuItems = await fetchMenu(displayDate, "breakfast")
-      console.log("Breakfast items fetched: " + JSON.stringify(menuItems))
       
       if (menuItems && menuItems.length > 0) {
         const labelText = w.addText("Breakfast:")
@@ -230,7 +226,6 @@ async function createWidget() {
     if (config.meals.includes("lunch")) {
       w.addSpacer(2)
       const menuItems = await fetchMenu(displayDate, "lunch")
-      console.log("Lunch items fetched: " + JSON.stringify(menuItems))
       
       if (menuItems && menuItems.length > 0) {
         const labelText = w.addText("Lunch:")
@@ -247,7 +242,6 @@ async function createWidget() {
     const errorText = w.addText("Error: " + error.message)
     errorText.textColor = new Color(config.textColor)
     errorText.font = Font.systemFont(9)
-    console.log("Widget error:", error)
   }
   
   w.addSpacer()
@@ -334,23 +328,18 @@ async function fetchMenu(date, mealType) {
     const dateParam = \`&date=\${year}-\${month}-\${day}\`
     
     const url = \`\${config.apiUrl}?account=\${accountId}\${dateParam}\`
-    console.log("Fetching menu from: " + url)
     
     const req = new Request(url)
     const response = await req.loadString()
-    console.log("Raw response: " + response.substring(0, 300))
     
     const data = JSON.parse(response)
-    console.log("Parsed data: " + JSON.stringify(data).substring(0, 200))
     
     if (!data || !data.items || data.items.length === 0) {
-      console.log("No menu items in response")
       return []
     }
     
     // Return up to 12 menu items
     const items = data.items.slice(0, 12)
-    console.log("Returning items: " + JSON.stringify(items))
     return items
     
   } catch (error) {
@@ -411,7 +400,13 @@ async function fetchMenu(date, mealType) {
             </li>
             <li>{t('widget.step2')}</li>
             <li>{t('widget.step3')}</li>
-            <li>{t('widget.step4')}</li>
+            <li>
+              {t('widget.step4')} (
+              <a href="#video-tutorial-placeholder" style={{color:'#2563eb', fontWeight:600}}>
+                {t('widget.step4Video')}
+              </a>
+              )
+            </li>
           </ol>
         </div>
 
@@ -427,20 +422,20 @@ async function fetchMenu(date, mealType) {
         <div style={{display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gap:12, marginBottom:16}}>
           <div>
             <label style={{display:'block', fontSize:'13px', marginBottom:4}}>{t('widget.colorStart')}</label>
-            <div style={{overflow:'hidden', borderRadius:8, border:'1px solid #3a3a3a', height:40}}>
-              <input type="color" value={gradientStart} onChange={e => setGradientStart(e.target.value)} style={{width:'calc(100% + 12px)', height:'calc(100% + 12px)', border:'none', cursor:'pointer', display:'block', margin:'-6px', padding:0, background:'none'}} />
+            <div style={{position:'relative', borderRadius:12, height:48, boxShadow:'0 2px 8px rgba(0,0,0,0.15)', overflow:'hidden', background:gradientStart}}>
+              <input type="color" value={gradientStart} onChange={e => setGradientStart(e.target.value)} style={{position:'absolute', inset:0, width:'100%', height:'100%', border:'none', cursor:'pointer', opacity:0}} />
             </div>
           </div>
           <div>
             <label style={{display:'block', fontSize:'13px', marginBottom:4}}>{t('widget.colorEnd')}</label>
-            <div style={{overflow:'hidden', borderRadius:8, border:'1px solid #3a3a3a', height:40}}>
-              <input type="color" value={gradientEnd} onChange={e => setGradientEnd(e.target.value)} style={{width:'calc(100% + 12px)', height:'calc(100% + 12px)', border:'none', cursor:'pointer', display:'block', margin:'-6px', padding:0, background:'none'}} />
+            <div style={{position:'relative', borderRadius:12, height:48, boxShadow:'0 2px 8px rgba(0,0,0,0.15)', overflow:'hidden', background:gradientEnd}}>
+              <input type="color" value={gradientEnd} onChange={e => setGradientEnd(e.target.value)} style={{position:'absolute', inset:0, width:'100%', height:'100%', border:'none', cursor:'pointer', opacity:0}} />
             </div>
           </div>
           <div>
             <label style={{display:'block', fontSize:'13px', marginBottom:4}}>{t('widget.colorText')}</label>
-            <div style={{overflow:'hidden', borderRadius:8, border:'1px solid #3a3a3a', height:40}}>
-              <input type="color" value={textColor} onChange={e => setTextColor(e.target.value)} style={{width:'calc(100% + 12px)', height:'calc(100% + 12px)', border:'none', cursor:'pointer', display:'block', margin:'-6px', padding:0, background:'none'}} />
+            <div style={{position:'relative', borderRadius:12, height:48, boxShadow:'0 2px 8px rgba(0,0,0,0.15)', overflow:'hidden', background:textColor}}>
+              <input type="color" value={textColor} onChange={e => setTextColor(e.target.value)} style={{position:'absolute', inset:0, width:'100%', height:'100%', border:'none', cursor:'pointer', opacity:0}} />
             </div>
           </div>
         </div>
