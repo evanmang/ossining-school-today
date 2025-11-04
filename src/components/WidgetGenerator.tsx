@@ -103,7 +103,8 @@ const config = {
   textColor: "${textColor}",
   apiUrl: "${apiUrl}",
   childUrl: "${childUrl}",
-  widgetSize: "${widgetSize}"
+  widgetSize: "${widgetSize}",
+  schoolDayApiUrl: "https://script.google.com/macros/s/AKfycbyAHJSmnXM_-bPSuBJmS2xHSbsFN5lOZoZTECd0MHQmGUWDJsx90bKzoN0mF0f0cM7t/exec"
 }
 
 // Widget code
@@ -179,9 +180,13 @@ async function createWidget() {
     
     w.addSpacer(4)
     
+    // Fetch school day from API
+    const schoolDayInfo = await getSchoolDay()
+    
     // Day info and specials
-    const dayText = getDayInfo(dayOfWeek, displayDate)
-    const specialsText = getSpecials(dayOfWeek, displayDate)
+    const dayText = schoolDayInfo.dayText
+    const specialsText = getSpecials(schoolDayInfo.dayKey)
+    const isSchoolDay = schoolDayInfo.dayKey !== null
     
     if (isLarge) {
       // Large widget: separate lines
@@ -206,35 +211,38 @@ async function createWidget() {
       w.addSpacer(6)
     }
     
-    // Fetch breakfast if enabled
-    if (config.meals.includes("breakfast")) {
-      w.addSpacer(2)
-      const menuItems = await fetchMenu(displayDate, "breakfast")
-      
-      if (menuItems && menuItems.length > 0) {
-        const labelText = w.addText("Breakfast:")
-        labelText.textColor = new Color(config.textColor, 0.9)
-        labelText.font = Font.boldSystemFont(mealLabelSize)
+    // Only fetch and display meals if it's a school day
+    if (isSchoolDay) {
+      // Fetch breakfast if enabled
+      if (config.meals.includes("breakfast")) {
+        w.addSpacer(2)
+        const menuItems = await fetchMenu(displayDate, "breakfast")
         
-        const menuText = w.addText(menuItems.slice(0, menuItemLimit).join(", "))
-        menuText.textColor = new Color(config.textColor, 0.8)
-        menuText.font = Font.systemFont(menuSize)
+        if (menuItems && menuItems.length > 0) {
+          const labelText = w.addText("Breakfast:")
+          labelText.textColor = new Color(config.textColor, 0.9)
+          labelText.font = Font.boldSystemFont(mealLabelSize)
+          
+          const menuText = w.addText(menuItems.slice(0, menuItemLimit).join(", "))
+          menuText.textColor = new Color(config.textColor, 0.8)
+          menuText.font = Font.systemFont(menuSize)
+        }
       }
-    }
-    
-    // Fetch lunch if enabled
-    if (config.meals.includes("lunch")) {
-      w.addSpacer(2)
-      const menuItems = await fetchMenu(displayDate, "lunch")
       
-      if (menuItems && menuItems.length > 0) {
-        const labelText = w.addText("Lunch:")
-        labelText.textColor = new Color(config.textColor, 0.9)
-        labelText.font = Font.boldSystemFont(mealLabelSize)
+      // Fetch lunch if enabled
+      if (config.meals.includes("lunch")) {
+        w.addSpacer(2)
+        const menuItems = await fetchMenu(displayDate, "lunch")
         
-        const menuText = w.addText(menuItems.slice(0, menuItemLimit).join(", "))
-        menuText.textColor = new Color(config.textColor, 0.8)
-        menuText.font = Font.systemFont(menuSize)
+        if (menuItems && menuItems.length > 0) {
+          const labelText = w.addText("Lunch:")
+          labelText.textColor = new Color(config.textColor, 0.9)
+          labelText.font = Font.boldSystemFont(mealLabelSize)
+          
+          const menuText = w.addText(menuItems.slice(0, menuItemLimit).join(", "))
+          menuText.textColor = new Color(config.textColor, 0.8)
+          menuText.font = Font.systemFont(menuSize)
+        }
       }
     }
     
@@ -252,36 +260,60 @@ async function createWidget() {
   return w
 }
 
-function getDayInfo(dayOfWeek, date) {
-  if (dayOfWeek === 0 || dayOfWeek === 6) {
-    return "No school today"
-  }
-  
-  // Determine day number (1-6) or A/B
-  const school = config.school
-  if (school === "AMD" || school === "OHS") {
-    // Alternate A/B based on date
-    const dayOfMonth = date.getDate()
-    const isADay = dayOfMonth % 2 === 0
-    return isADay ? "Day A" : "Day B"
-  } else {
-    // Day 1-6 rotation (simplified)
-    return \`Day \${dayOfWeek}\`
+async function getSchoolDay() {
+  try {
+    const req = new Request(config.schoolDayApiUrl)
+    const response = await req.loadJSON()
+    
+    if (response.status === "success") {
+      const dayNumber = response.dayNumber
+      
+      // Check if it's "No School Today"
+      if (dayNumber === "No School Today") {
+        return { dayText: "No school today", dayKey: null }
+      }
+      
+      // Determine day key based on school type
+      const school = config.school
+      let dayKey = ""
+      let dayText = ""
+      
+      if (school === "AMD" || school === "OHS") {
+        // For AMD/OHS, convert day number to A/B
+        // Odd days = A, Even days = B
+        const isOdd = parseInt(dayNumber) % 2 === 1
+        dayKey = isOdd ? "A" : "B"
+        dayText = \`Day \${dayKey}\`
+      } else {
+        // For elementary/middle schools, use day number 1-6
+        dayKey = String(dayNumber)
+        dayText = \`Day \${dayNumber}\`
+      }
+      
+      return { dayText, dayKey }
+    } else {
+      // Fallback to weekend check
+      const now = new Date()
+      const dayOfWeek = now.getDay()
+      if (dayOfWeek === 0 || dayOfWeek === 6) {
+        return { dayText: "No school today", dayKey: null }
+      }
+      return { dayText: "Day info unavailable", dayKey: null }
+    }
+  } catch (error) {
+    console.error("Error fetching school day: " + error.message)
+    // Fallback to weekend check
+    const now = new Date()
+    const dayOfWeek = now.getDay()
+    if (dayOfWeek === 0 || dayOfWeek === 6) {
+      return { dayText: "No school today", dayKey: null }
+    }
+    return { dayText: "Day info unavailable", dayKey: null }
   }
 }
 
-function getSpecials(dayOfWeek, date) {
-  if (dayOfWeek === 0 || dayOfWeek === 6) return ""
-  
-  const school = config.school
-  let dayKey = ""
-  
-  if (school === "AMD" || school === "OHS") {
-    const dayOfMonth = date.getDate()
-    dayKey = (dayOfMonth % 2 === 0) ? "A" : "B"
-  } else {
-    dayKey = String(dayOfWeek)
-  }
+function getSpecials(dayKey) {
+  if (!dayKey) return ""
   
   const specials = config.specials[dayKey] || []
   if (specials.length === 0) return ""

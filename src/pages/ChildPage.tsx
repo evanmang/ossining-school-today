@@ -49,27 +49,34 @@ export default function ChildPage(){
       }
       setDayKey(key)
 
-      // fetch menus via proxy for each meal
-      setMenusLoading(true)
-      const m: Record<string,string[]> = {}
-      for(const meal of p.meals){
-        const code = getAccountCode(p.school, meal as 'breakfast'|'lunch')
-        if(!code) { m[meal] = []; continue }
-  // if running locally, prefer the local proxy at port 4000
-  const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1'
-  const proxyBase = isLocal ? 'http://localhost:4000' : '/api'
-  const resp = await fetch(`${proxyBase}/fdmenu?account=${encodeURIComponent(code)}&lang=${encodeURIComponent(i18n.language || 'en')}`)
-  if(!resp.ok){ m[meal] = [] ; continue }
-        const j = await resp.json()
-        // if proxy returns structured items (objects), keep them, otherwise treat as strings
-        if(Array.isArray(j.items) && j.items.length > 0 && typeof j.items[0] === 'object'){
-          m[meal] = j.items
-        } else {
-          m[meal] = (j.items || []).map(String)
+      // Only fetch menus if it's a school day
+      if (key !== null) {
+        // fetch menus via proxy for each meal
+        setMenusLoading(true)
+        const m: Record<string,string[]> = {}
+        for(const meal of p.meals){
+          const code = getAccountCode(p.school, meal as 'breakfast'|'lunch')
+          if(!code) { m[meal] = []; continue }
+    // if running locally, prefer the local proxy at port 4000
+    const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1'
+    const proxyBase = isLocal ? 'http://localhost:4000' : '/api'
+    const resp = await fetch(`${proxyBase}/fdmenu?account=${encodeURIComponent(code)}&lang=${encodeURIComponent(i18n.language || 'en')}`)
+    if(!resp.ok){ m[meal] = [] ; continue }
+          const j = await resp.json()
+          // if proxy returns structured items (objects), keep them, otherwise treat as strings
+          if(Array.isArray(j.items) && j.items.length > 0 && typeof j.items[0] === 'object'){
+            m[meal] = j.items
+          } else {
+            m[meal] = (j.items || []).map(String)
+          }
         }
+        setMenus(m)
+        setMenusLoading(false)
+      } else {
+        // No school today, clear menus
+        setMenus({})
+        setMenusLoading(false)
       }
-      setMenus(m)
-      setMenusLoading(false)
     }catch(e){
       console.error(e)
       setError(String(e))
@@ -145,7 +152,7 @@ export default function ChildPage(){
         <div style={{marginTop:8, color:'crimson'}}>{t('child.errorLoading')} {error}</div>
       )}
 
-      {profile.meals.map(m => (
+      {dayKey !== null && profile.meals.map(m => (
         <div key={m} style={{marginTop:12}}>
           <h3 style={{marginBottom:6}}>{t(`meals.${m}`)}</h3>
           {menus[m] && menus[m].length > 0 ? (
