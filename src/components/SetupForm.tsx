@@ -109,7 +109,7 @@ export default function SetupForm(){
       <div className="setup">
         <div>
           <label>{t('setup.name')}</label>
-          <input type="text" value={name} onChange={e=>setName(e.target.value)} placeholder="Student" />
+          <input type="text" value={name} onChange={e=>setName(e.target.value)} placeholder={t('setup.namePlaceholder')} />
         </div>
 
         <div>

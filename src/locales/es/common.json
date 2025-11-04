@@ -5,11 +5,12 @@
   "setup": {
     "heading": "Configuración",
     "name": "Nombre",
+    "namePlaceholder": "Estudiante",
     "school": "Escuela",
     "meals": "Comidas a mostrar",
     "create": "Crear URL/Widget",
     "copied": "Copiado al portapapeles — abrir o compartir:",
-    "placeholderCustom": "Personalizado",
+    "placeholderCustom": "Personalizar",
     "savedProfiles": "Perfiles guardados"
   },
   "meals": {

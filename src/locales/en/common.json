@@ -5,11 +5,12 @@
   "setup": {
     "heading": "Setup",
     "name": "Name",
+    "namePlaceholder": "Student",
     "school": "School",
     "meals": "Meals to show",
     "create": "Create URL/Widget",
     "copied": "Copied to clipboard — open or share:",
-    "placeholderCustom": "Custom",
+    "placeholderCustom": "Customize",
     "savedProfiles": "Saved profiles"
   },
   "meals": {
