@@ -137,7 +137,7 @@ export default function ChildPage(){
 
       {/* Specials shown directly under day when configured (no header) */}
       { specialsForToday.length > 0 && (
-        <div style={{marginTop:6, padding:8, background:'#f6f8fb', borderRadius:6}}>
+        <div style={{marginTop:6, padding:8, background:'var(--card-bg)', border:'1px solid var(--border)', borderRadius:6}}>
           <div style={{marginTop:6}}>
             {specialsForToday.map((s, i) => (
               <span key={i} style={{marginRight:12, display:'inline-block'}}>{specialEmojiMap[s] ? `${specialEmojiMap[s]} ${t(`specials.${s}`) || s}` : t(`specials.${s}`) || s}</span>
