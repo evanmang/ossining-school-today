@@ -26,6 +26,10 @@ Visit http://localhost:5173
 - **Backend**: Serverless functions (Vercel)
 - **i18n**: react-i18next
 
+## To Do
+- Add clickable link to fdmealplanner page for selected menu on child page.
+- Make widget navigate to web version of child page with same parameters.
+
 ## Credits & Attribution
 
 Menu parsing functionality is based on [fdmealplanner](https://github.com/jdeath/fdmealplanner) by [@jdeath](https://github.com/jdeath). The original parser was adapted to add:
