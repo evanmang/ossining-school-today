@@ -98,6 +98,9 @@ export default function ChildPage(){
     PE: '🏃',
     Art: '🎨',
     Stream: '💻',
+    STEM: '🔬',
+    AVID: '📚',
+    Health: '⚕️',
     Music: '🎵',
     Band: '🎺',
     Orchestra: '🎻',
@@ -139,9 +142,18 @@ export default function ChildPage(){
       { specialsForToday.length > 0 && (
         <div style={{marginTop:6, padding:8, background:'var(--card-bg)', border:'1px solid var(--border)', borderRadius:6}}>
           <div style={{marginTop:6}}>
-            {specialsForToday.map((s, i) => (
-              <span key={i} style={{marginRight:12, display:'inline-block'}}>{specialEmojiMap[s] ? `${specialEmojiMap[s]} ${t(`specials.${s}`) || s}` : t(`specials.${s}`) || s}</span>
-            ))}
+            {specialsForToday.map((s, i) => {
+              // Check if this is a known special that has a translation key
+              const knownSpecials = ['PE', 'Art', 'Stream', 'STEM', 'AVID', 'Health', 'Music', 'Band', 'Orchestra', 'Chorus', 'Other']
+              const isKnownSpecial = knownSpecials.includes(s)
+              const translatedName = isKnownSpecial ? t(`specials.${s}`) : s
+              const emoji = specialEmojiMap[s] || ''
+              const displayText = emoji ? `${emoji} ${translatedName}` : translatedName
+              
+              return (
+                <span key={i} style={{marginRight:12, display:'inline-block'}}>{displayText}</span>
+              )
+            })}
           </div>
         </div>
       )}
@@ -152,9 +164,22 @@ export default function ChildPage(){
         <div style={{marginTop:8, color:'crimson'}}>{t('child.errorLoading')} {error}</div>
       )}
 
-      {dayKey !== null && profile.meals.map(m => (
+      {dayKey !== null && profile.meals.map(m => {
+        // Generate fdmealplanner URL for this meal
+        const mealCode = getAccountCode(profile.school, m as 'breakfast' | 'lunch')
+        const fdmealplannerUrl = mealCode ? `https://www.fdmealplanner.com/#menu/mealPlanner/${mealCode}` : null
+        
+        return (
         <div key={m} style={{marginTop:12}}>
-          <h3 style={{marginBottom:6}}>{t(`meals.${m}`)}</h3>
+          {fdmealplannerUrl ? (
+            <h3 style={{marginBottom:6}}>
+              <a href={fdmealplannerUrl} target="_blank" rel="noreferrer" style={{color:'#2563eb', textDecoration:'none'}}>
+                {t(`meals.${m}`)} ↗
+              </a>
+            </h3>
+          ) : (
+            <h3 style={{marginBottom:6}}>{t(`meals.${m}`)}</h3>
+          )}
           {menus[m] && menus[m].length > 0 ? (
             // if items are objects with category/componentName, group by category
             (typeof menus[m][0] === 'object') ? (
@@ -177,7 +202,8 @@ export default function ChildPage(){
             <div>{t('child.noMenuFor',{meal:m})} { !menusLoading && <button onClick={()=>load(profile)}>{t('buttons.retry') || 'Retry'}</button> }</div>
           )}
         </div>
-      ))}
+        )
+      })}
     </div>
   )
 }

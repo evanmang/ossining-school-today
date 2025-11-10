@@ -9,7 +9,9 @@ View today's lunch menu and school day schedule for Ossining schools, with bilin
 - 🌐 Bilingual support (English/Spanish)
 - 📱 Mobile-friendly design
 - 🔗 Shareable URLs for family members
-- 📱 iOS Widget generation for use with the Scriptable App.
+- 📱 iOS Widget generation for use with the Scriptable App
+- 🔗 Clickable links to fdmealplanner for detailed menu information
+- ↩️ Seamless navigation with state preservation between setup and child pages
 
 ## Local Development
 
@@ -25,10 +27,6 @@ Visit http://localhost:5173
 - **Frontend**: React + Vite + TypeScript
 - **Backend**: Serverless functions (Vercel)
 - **i18n**: react-i18next
-
-## To Do
-- Add clickable link to fdmealplanner page for selected menu on child page.
-- Make widget navigate to web version of child page with same parameters.
 
 ## Credits & Attribution
 

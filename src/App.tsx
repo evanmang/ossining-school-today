@@ -48,7 +48,11 @@ export default function App() {
         </div>
         <div style={{display:'flex', alignItems:'center', gap:12}}>
           {getPath().startsWith('/child') && (
-            <a href="/" style={{fontSize:'0.9em', color:'#2563eb', textDecoration:'none'}}>← {t('setup.heading')}</a>
+            <a href={(() => {
+              const params = new URLSearchParams(location.search)
+              const cfg = params.get('cfg')
+              return cfg ? `/?cfg=${cfg}` : '/'
+            })()} style={{fontSize:'0.9em', color:'#2563eb', textDecoration:'none'}}>← {t('setup.heading')}</a>
           )}
           <div>
             <button onClick={()=>setLang('en')} style={{marginRight:6,opacity:i18n.language==='en'?1:0.6}}>EN</button>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { encodeProfile, Profile, School, MealType } from '../utils/profile'
+import { encodeProfile, decodeProfile, Profile, School, MealType } from '../utils/profile'
 import WidgetGenerator from './WidgetGenerator'
 
 const SCHOOLS: School[] = ['Park','Brookside','Claremont','Roosevelt','AMD','OHS']
@@ -99,6 +99,50 @@ export default function SetupForm(){
     }
   }, [name, school, meals, specials, custom])
 
+  // Load profile from URL parameter if present
+  useEffect(() => {
+    const params = new URLSearchParams(location.search)
+    const cfg = params.get('cfg')
+    if (cfg) {
+      try {
+        const profile = decodeProfile(cfg)
+        if (profile) {
+          setName(profile.name)
+          setSchool(profile.school)
+          setMeals(profile.meals)
+          
+          // Extract custom specials and restore both specials and custom state
+          const restoredSpecials: Record<string,string[]> = {}
+          const restoredCustom: Record<string,string> = {}
+          const knownSpecials = ['PE', 'Art', 'Stream', 'STEM', 'AVID', 'Health', 'Music', 'Band', 'Orchestra', 'Chorus']
+          
+          for (const [day, specialsList] of Object.entries(profile.specials)) {
+            restoredSpecials[day] = []
+            for (const special of specialsList) {
+              if (knownSpecials.includes(special)) {
+                restoredSpecials[day].push(special)
+              } else {
+                // This is a custom special
+                restoredSpecials[day].push('Other')
+                restoredCustom[day] = special
+              }
+            }
+          }
+          
+          setSpecials(restoredSpecials)
+          setCustom(restoredCustom)
+        }
+        
+        // Clear the URL parameter to avoid re-triggering
+        const newUrl = new URL(location.href)
+        newUrl.searchParams.delete('cfg')
+        history.replaceState({}, '', newUrl.pathname + newUrl.search)
+      } catch (error) {
+        console.error('Error decoding profile from URL:', error)
+      }
+    }
+  }, [])
+
   function copyResult(){
     if(!resultUrl) return
     try{ navigator.clipboard?.writeText(resultUrl); setCopied(true); setTimeout(()=>setCopied(false),1600) }catch{}
@@ -140,7 +184,9 @@ export default function SetupForm(){
               <div>
                 <label><input type="checkbox" checked={(specials[d]||[]).includes('PE')} onChange={()=>toggleSpecial(d,'PE')} /> {t('specials.PE')}</label>
                 <label><input type="checkbox" checked={(specials[d]||[]).includes('Art')} onChange={()=>toggleSpecial(d,'Art')} /> {t('specials.Art')}</label>
-                <label><input type="checkbox" checked={(specials[d]||[]).includes('Stream')} onChange={()=>toggleSpecial(d,'Stream')} /> {t('specials.Stream')}</label>
+                <label><input type="checkbox" checked={(specials[d]||[]).includes('STEM')} onChange={()=>toggleSpecial(d,'STEM')} /> {t('specials.STEM')}</label>
+                <label><input type="checkbox" checked={(specials[d]||[]).includes('AVID')} onChange={()=>toggleSpecial(d,'AVID')} /> {t('specials.AVID')}</label>
+                <label><input type="checkbox" checked={(specials[d]||[]).includes('Health')} onChange={()=>toggleSpecial(d,'Health')} /> {t('specials.Health')}</label>
                 <label><input type="checkbox" checked={(specials[d]||[]).includes('Music')} onChange={()=>toggleSpecial(d,'Music')} /> {t('specials.Music')}</label>
                 <label><input type="checkbox" checked={(specials[d]||[]).includes('Band')} onChange={()=>toggleSpecial(d,'Band')} /> {t('specials.Band')}</label>
                 <label><input type="checkbox" checked={(specials[d]||[]).includes('Orchestra')} onChange={()=>toggleSpecial(d,'Orchestra')} /> {t('specials.Orchestra')}</label>

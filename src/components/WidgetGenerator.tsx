@@ -104,6 +104,55 @@ const config = {
   apiUrl: "${apiUrl}",
   childUrl: "${childUrl}",
   widgetSize: "${widgetSize}",
+  language: "${i18n.language || 'en'}",
+  specialsTranslations: {
+    en: {
+      "PE": "PE",
+      "Art": "Art", 
+      "Stream": "Stream",
+      "STEM": "STEM",
+      "AVID": "AVID",
+      "Health": "Health",
+      "Music": "Music",
+      "Band": "Band",
+      "Orchestra": "Orchestra",
+      "Chorus": "Chorus"
+    },
+    es: {
+      "PE": "Educación Física",
+      "Art": "Arte",
+      "Stream": "STREAM", 
+      "STEM": "STEM",
+      "AVID": "AVID",
+      "Health": "Salud",
+      "Music": "Música",
+      "Band": "Banda",
+      "Orchestra": "Orquesta",
+      "Chorus": "Coro"
+    }
+  },
+  mealTranslations: {
+    en: {
+      "breakfast": "Breakfast:",
+      "lunch": "Lunch:"
+    },
+    es: {
+      "breakfast": "Desayuno:",
+      "lunch": "Almuerzo:"
+    }
+  },
+  generalTranslations: {
+    en: {
+      "noSchool": "No school today",
+      "day": "Day",
+      "error": "Error:"
+    },
+    es: {
+      "noSchool": "No hay clases hoy",
+      "day": "Día",
+      "error": "Error:"
+    }
+  },
   schoolDayApiUrl: "https://script.google.com/macros/s/AKfycbyAHJSmnXM_-bPSuBJmS2xHSbsFN5lOZoZTECd0MHQmGUWDJsx90bKzoN0mF0f0cM7t/exec"
 }
 
@@ -169,9 +218,20 @@ async function createWidget() {
       menuSize = 14
     }
     
-    // Determine menu item limit
+    // Determine menu item limit based on widget size and meals
     const isSmall = widgetSize === "small"
-    const menuItemLimit = (isSmall && hasBothMeals) ? 3 : 12
+    
+    let menuItemLimit
+    if (isSmall) {
+      // Small widget: 6 items total, split between meals if both enabled
+      menuItemLimit = hasBothMeals ? 3 : 6
+    } else if (isMedium) {
+      // Medium widget: 12 items total, split between meals if both enabled
+      menuItemLimit = hasBothMeals ? 6 : 12
+    } else {
+      // Large widget: 12 items per meal
+      menuItemLimit = 12
+    }
     
     // Title
     const title = w.addText(config.studentName + " • " + config.school)
@@ -219,7 +279,8 @@ async function createWidget() {
         const menuItems = await fetchMenu(displayDate, "breakfast")
         
         if (menuItems && menuItems.length > 0) {
-          const labelText = w.addText("Breakfast:")
+          const mealLabels = config.mealTranslations[config.language] || config.mealTranslations.en
+          const labelText = w.addText(mealLabels.breakfast)
           labelText.textColor = new Color(config.textColor, 0.9)
           labelText.font = Font.boldSystemFont(mealLabelSize)
           
@@ -235,7 +296,8 @@ async function createWidget() {
         const menuItems = await fetchMenu(displayDate, "lunch")
         
         if (menuItems && menuItems.length > 0) {
-          const labelText = w.addText("Lunch:")
+          const mealLabels = config.mealTranslations[config.language] || config.mealTranslations.en
+          const labelText = w.addText(mealLabels.lunch)
           labelText.textColor = new Color(config.textColor, 0.9)
           labelText.font = Font.boldSystemFont(mealLabelSize)
           
@@ -247,7 +309,8 @@ async function createWidget() {
     }
     
   } catch (error) {
-    const errorText = w.addText("Error: " + error.message)
+    const generalLabels = config.generalTranslations[config.language] || config.generalTranslations.en
+    const errorText = w.addText(generalLabels.error + " " + error.message)
     errorText.textColor = new Color(config.textColor)
     errorText.font = Font.systemFont(9)
   }
@@ -270,7 +333,8 @@ async function getSchoolDay() {
       
       // Check if it's "No School Today"
       if (dayNumber === "No School Today") {
-        return { dayText: "No school today", dayKey: null }
+        const generalLabels = config.generalTranslations[config.language] || config.generalTranslations.en
+        return { dayText: generalLabels.noSchool, dayKey: null }
       }
       
       // Determine day key based on school type
@@ -283,11 +347,13 @@ async function getSchoolDay() {
         // Odd days = A, Even days = B
         const isOdd = parseInt(dayNumber) % 2 === 1
         dayKey = isOdd ? "A" : "B"
-        dayText = \`Day \${dayKey}\`
+        const generalLabels = config.generalTranslations[config.language] || config.generalTranslations.en
+        dayText = \`\${generalLabels.day} \${dayKey}\`
       } else {
         // For elementary/middle schools, use day number 1-6
         dayKey = String(dayNumber)
-        dayText = \`Day \${dayNumber}\`
+        const generalLabels = config.generalTranslations[config.language] || config.generalTranslations.en
+        dayText = \`\${generalLabels.day} \${dayNumber}\`
       }
       
       return { dayText, dayKey }
@@ -296,19 +362,22 @@ async function getSchoolDay() {
       const now = new Date()
       const dayOfWeek = now.getDay()
       if (dayOfWeek === 0 || dayOfWeek === 6) {
-        return { dayText: "No school today", dayKey: null }
+        const generalLabels = config.generalTranslations[config.language] || config.generalTranslations.en
+        return { dayText: generalLabels.noSchool, dayKey: null }
       }
-      return { dayText: "Day info unavailable", dayKey: null }
+      const generalLabels = config.generalTranslations[config.language] || config.generalTranslations.en
+      return { dayText: generalLabels.noSchool, dayKey: null }
     }
   } catch (error) {
     console.error("Error fetching school day: " + error.message)
     // Fallback to weekend check
     const now = new Date()
     const dayOfWeek = now.getDay()
+    const generalLabels = config.generalTranslations[config.language] || config.generalTranslations.en
     if (dayOfWeek === 0 || dayOfWeek === 6) {
-      return { dayText: "No school today", dayKey: null }
+      return { dayText: generalLabels.noSchool, dayKey: null }
     }
-    return { dayText: "Day info unavailable", dayKey: null }
+    return { dayText: generalLabels.noSchool, dayKey: null }
   }
 }
 
@@ -318,18 +387,29 @@ function getSpecials(dayKey) {
   const specials = config.specials[dayKey] || []
   if (specials.length === 0) return ""
   
-  // Add emojis
+  // Add emojis for known specials only
   const emojiMap = {
     "PE": "🏃",
     "Art": "🎨",
     "Stream": "💻",
+    "STEM": "🔬",
+    "AVID": "📚",
+    "Health": "⚕️",
     "Music": "🎵",
     "Band": "🎺",
     "Orchestra": "🎻",
     "Chorus": "🎤"
   }
   
-  return specials.map(s => \`\${emojiMap[s] || ""}\${s}\`).join(" • ")
+  // Get translations for current language
+  const translations = config.specialsTranslations[config.language] || config.specialsTranslations.en
+  
+  // Apply translations and emojis
+  return specials.map(s => {
+    const translatedName = translations[s] || s  // Use translation if available, otherwise use original
+    const emoji = emojiMap[s] || ""
+    return \`\${emoji}\${translatedName}\`
+  }).join(" • ")
 }
 
 async function fetchMenu(date, mealType) {
@@ -359,7 +439,7 @@ async function fetchMenu(date, mealType) {
     const day = String(date.getDate()).padStart(2, '0')
     const dateParam = \`&date=\${year}-\${month}-\${day}\`
     
-    const url = \`\${config.apiUrl}?account=\${accountId}\${dateParam}\`
+    const url = \`\${config.apiUrl}?account=\${accountId}\${dateParam}&lang=\${config.language}\`
     
     const req = new Request(url)
     const response = await req.loadString()
@@ -509,9 +589,20 @@ async function fetchMenu(date, mealType) {
                 menuSize = 14
               }
               
-              // Determine menu item limit for preview
+              // Determine menu item limit for preview - same logic as widget
               const isSmall = widgetSize === 'small'
-              const previewMenuLimit = (isSmall && hasBothMeals) ? 3 : 12
+              
+              let previewMenuLimit
+              if (isSmall) {
+                // Small widget: 6 items total, split between meals if both enabled
+                previewMenuLimit = hasBothMeals ? 3 : 6
+              } else if (isMedium) {
+                // Medium widget: 12 items total, split between meals if both enabled
+                previewMenuLimit = hasBothMeals ? 6 : 12
+              } else {
+                // Large widget: 12 items per meal
+                previewMenuLimit = 12
+              }
               
               // Use fetched menu data or fallback samples
               const breakfastLabel = t('meals.breakfast')
@@ -532,13 +623,22 @@ async function fetchMenu(date, mealType) {
                 "PE": "🏃",
                 "Art": "🎨",
                 "Stream": "💻",
+                "STEM": "🔬",
+                "AVID": "📚",
+                "Health": "⚕️",
                 "Music": "🎵",
                 "Band": "🎺",
                 "Orchestra": "🎻",
                 "Chorus": "🎤"
               }
+              const knownSpecials = ['PE', 'Art', 'Stream', 'STEM', 'AVID', 'Health', 'Music', 'Band', 'Orchestra', 'Chorus', 'Other']
               const specialLabel = daySpecials.length > 0 
-                ? daySpecials.map(s => `${emojiMap[s] || ""}${t(`specials.${s}`)}`).join(" • ")
+                ? daySpecials.map(s => {
+                    const isKnownSpecial = knownSpecials.includes(s)
+                    const translatedName = isKnownSpecial ? t(`specials.${s}`) : s
+                    const emoji = emojiMap[s] || ""
+                    return `${emoji}${translatedName}`
+                  }).join(" • ")
                 : null
               
               return (
