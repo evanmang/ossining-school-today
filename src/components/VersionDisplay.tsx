@@ -85,8 +85,34 @@ interface VersionModalProps {
 function VersionModal({ onClose }: VersionModalProps) {
   const { t } = useTranslation()
 
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Safari-compatible backdrop click detection
+    const target = e.target as HTMLElement
+    const currentTarget = e.currentTarget as HTMLElement
+    
+    // Check if the click was on the backdrop (not on modal content)
+    if (target === currentTarget || target.classList.contains('modal-backdrop')) {
+      e.preventDefault()
+      e.stopPropagation()
+      onClose()
+    }
+  }
+
+  const handleBackdropTouch = (e: React.TouchEvent<HTMLDivElement>) => {
+    // Safari touch support
+    const target = e.target as HTMLElement
+    const currentTarget = e.currentTarget as HTMLElement
+    
+    if (target === currentTarget || target.classList.contains('modal-backdrop')) {
+      e.preventDefault()
+      e.stopPropagation()
+      onClose()
+    }
+  }
+
   return (
     <div 
+      className="modal-backdrop"
       style={{
         position: 'fixed',
         top: 0,
@@ -98,14 +124,11 @@ function VersionModal({ onClose }: VersionModalProps) {
         alignItems: 'center',
         justifyContent: 'center',
         zIndex: 1001,
-        padding: '20px'
+        padding: '20px',
+        cursor: 'pointer'
       }}
-      onClick={(e) => {
-        // Close modal when clicking the backdrop
-        if (e.target === e.currentTarget) {
-          onClose()
-        }
-      }}
+      onClick={handleBackdropClick}
+      onTouchEnd={handleBackdropTouch}
     >
       <div style={{
         background: 'var(--bg)',
@@ -117,8 +140,12 @@ function VersionModal({ onClose }: VersionModalProps) {
         overflow: 'auto',
         width: '100%',
         boxShadow: '0 8px 24px rgba(0,0,0,0.3)',
-        color: 'var(--fg)'
-      }}>
+        color: 'var(--fg)',
+        cursor: 'default',
+        pointerEvents: 'auto'
+      }}
+      onClick={(e) => e.stopPropagation()}
+      >
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
