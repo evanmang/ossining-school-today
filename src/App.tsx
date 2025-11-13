@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { Analytics } from '@vercel/analytics/react'
 import SetupForm from './components/SetupForm'
 import ChildPage from './pages/ChildPage'
+import VersionDisplay from './components/VersionDisplay'
 
 function getPath(): string{
   return location.pathname || '/'
@@ -79,6 +80,9 @@ export default function App() {
           <a href="https://github.com/evanmang/ossining-school-today" target="_blank" rel="noreferrer" style={{fontSize:'0.85em', color:'#2563eb', textDecoration:'none'}}>
             {t('footer.github')}
           </a>
+        </div>
+        <div>
+          <VersionDisplay compact={true} />
         </div>
         <div>
           <div ref={bmcRef} aria-hidden={false}></div>
