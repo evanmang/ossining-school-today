@@ -73,6 +73,19 @@ section h2{margin:0 0 12px 0}
   .logo{width:36px;height:36px}
   .site-header h1{font-size:16px}
   .child-row{flex-direction:column}
+  
+  .site-footer{
+    flex-direction:column;
+    gap:12px;
+    align-items:center;
+    text-align:center;
+  }
+  
+  .bmc-fallback{
+    padding:4px 8px;
+    font-size:12px;
+    white-space:nowrap;
+  }
 }
 
 /* Dark mode */
