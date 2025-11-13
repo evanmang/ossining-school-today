@@ -221,24 +221,7 @@ export default function SetupForm(){
               <div className="share-box">
                 <input readOnly value={resultUrl} />
                 <button onClick={copyResult}>{copied ? t('buttons.copied') : t('buttons.copy')}</button>
-                <a 
-                  href={resultUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'inline-block',
-                    padding: '8px 12px',
-                    backgroundColor: '#007bff',
-                    color: 'white',
-                    textDecoration: 'none',
-                    borderRadius: '4px',
-                    border: 'none',
-                    cursor: 'pointer',
-                    fontSize: '14px'
-                  }}
-                >
-                  Open URL
-                </a>
+                <button onClick={() => window.open(resultUrl, '_blank')}>Open URL</button>
               </div>
               <WidgetGenerator 
                 profile={{

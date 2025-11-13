@@ -86,26 +86,22 @@ function VersionModal({ onClose }: VersionModalProps) {
   const { t } = useTranslation()
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    // Safari-compatible backdrop click detection
+    // Only close modal if clicking directly on the backdrop
     const target = e.target as HTMLElement
     const currentTarget = e.currentTarget as HTMLElement
     
-    // Check if the click was on the backdrop (not on modal content)
-    if (target === currentTarget || target.classList.contains('modal-backdrop')) {
-      e.preventDefault()
-      e.stopPropagation()
+    // Only handle clicks on the actual backdrop element itself
+    if (target === currentTarget) {
       onClose()
     }
   }
 
   const handleBackdropTouch = (e: React.TouchEvent<HTMLDivElement>) => {
-    // Safari touch support
+    // Only close modal if touching directly on the backdrop  
     const target = e.target as HTMLElement
     const currentTarget = e.currentTarget as HTMLElement
     
-    if (target === currentTarget || target.classList.contains('modal-backdrop')) {
-      e.preventDefault()
-      e.stopPropagation()
+    if (target === currentTarget) {
       onClose()
     }
   }
