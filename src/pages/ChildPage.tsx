@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { decodeProfile, Profile } from '../utils/profile'
 import { getAccountCode } from '../data/schools'
 import { CATEGORY_KEYS } from '../data/menu-translations'
+import { getSchoolDay, getDayKey, SchoolCode } from '../data/school-calendar'
 
 export default function ChildPage(){
   const { t, i18n } = useTranslation()
@@ -37,14 +38,13 @@ export default function ChildPage(){
       if(raw === null || raw === 'No School Today'){
         key = null
       } else {
-        // If AMD/OHS use A/B mapping
-        if(p.school === 'AMD' || p.school === 'OHS'){
-          const n = parseInt(String(raw), 10)
-          if(!isNaN(n)) key = (n % 2 === 1) ? 'A' : 'B'
+        // Use the new school calendar system for accurate day calculation
+        const schoolDay = getSchoolDay(raw, p.school as SchoolCode, new Date())
+        
+        if (schoolDay.dayNumber === 'closed') {
+          key = null
         } else {
-          // elementary: use numeric day
-          const n = parseInt(String(raw), 10)
-          if(!isNaN(n)) key = String(n)
+          key = getDayKey(schoolDay.dayNumber, p.school as SchoolCode)
         }
       }
       setDayKey(key)

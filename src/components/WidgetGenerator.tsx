@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Profile } from '../utils/profile'
+import { SCHOOL_DAY_OFFSETS, SCHOOL_DATE_OVERRIDES } from '../data/school-calendar'
 
 interface WidgetGeneratorProps {
   profile: Profile
@@ -145,15 +146,19 @@ const config = {
     en: {
       "noSchool": "No school today",
       "day": "Day",
-      "error": "Error:"
+      "error": "Error:",
+      "offline": "Offline"
     },
     es: {
       "noSchool": "No hay clases hoy",
       "day": "Día",
-      "error": "Error:"
+      "error": "Error:",
+      "offline": "Sin conexión"
     }
   },
-  schoolDayApiUrl: "https://script.google.com/macros/s/AKfycbyAHJSmnXM_-bPSuBJmS2xHSbsFN5lOZoZTECd0MHQmGUWDJsx90bKzoN0mF0f0cM7t/exec"
+  schoolDayApiUrl: "https://script.google.com/macros/s/AKfycbyAHJSmnXM_-bPSuBJmS2xHSbsFN5lOZoZTECd0MHQmGUWDJsx90bKzoN0mF0f0cM7t/exec",
+  schoolDayOffsets: ${JSON.stringify(SCHOOL_DAY_OFFSETS)},
+  schoolDateOverrides: ${JSON.stringify(SCHOOL_DATE_OVERRIDES)}
 }
 
 // Widget code
@@ -184,6 +189,9 @@ async function createWidget() {
   w.backgroundGradient = gradient
   
   w.setPadding(12, 12, 12, 12)
+  
+  // Check for cached data in case of network issues
+  const cacheKey = \`ossining_cache_\${config.studentName}_\${config.school}\`
   
   try {
     // Use current date
@@ -233,20 +241,44 @@ async function createWidget() {
       menuItemLimit = 12
     }
     
-    // Title
-    const title = w.addText(config.studentName + " • " + config.school)
+    // Try to fetch live data
+    let dayText, specialsText, isSchoolDay
+    let offlineMode = false
+    
+    try {
+      // Fetch school day from API
+      const schoolDayInfo = await getSchoolDay()
+      dayText = schoolDayInfo.dayText
+      specialsText = getSpecials(schoolDayInfo.dayKey)
+      isSchoolDay = schoolDayInfo.dayKey !== null
+    } catch (error) {
+      // Use cached data if available
+      console.log("Failed to fetch live data, checking cache...")
+      const cachedData = await loadFromCache(cacheKey)
+      if (cachedData) {
+        dayText = cachedData.dayText
+        specialsText = cachedData.specialsText
+        isSchoolDay = cachedData.isSchoolDay
+        offlineMode = true
+      } else {
+        // Ultimate fallback
+        const generalLabels = config.generalTranslations[config.language] || config.generalTranslations.en
+        dayText = generalLabels.noSchool
+        specialsText = ""
+        isSchoolDay = false
+        offlineMode = true
+      }
+    }
+    
+    // Title (with offline indicator if needed)
+    const titleText = offlineMode ? 
+      \`\${config.studentName} • \${config.school} (\${config.generalTranslations[config.language]?.offline || "Offline"})\` :
+      \`\${config.studentName} • \${config.school}\`
+    const title = w.addText(titleText)
     title.textColor = new Color(config.textColor)
     title.font = Font.boldSystemFont(titleSize)
     
     w.addSpacer(4)
-    
-    // Fetch school day from API
-    const schoolDayInfo = await getSchoolDay()
-    
-    // Day info and specials
-    const dayText = schoolDayInfo.dayText
-    const specialsText = getSpecials(schoolDayInfo.dayKey)
-    const isSchoolDay = schoolDayInfo.dayKey !== null
     
     if (isLarge) {
       // Large widget: separate lines
@@ -276,7 +308,9 @@ async function createWidget() {
       // Fetch breakfast if enabled
       if (config.meals.includes("breakfast")) {
         w.addSpacer(2)
-        const menuItems = await fetchMenu(displayDate, "breakfast")
+        const menuItems = offlineMode ? 
+          await getCachedMenu(cacheKey, "breakfast") :
+          await fetchMenuWithCache(displayDate, "breakfast", cacheKey)
         
         if (menuItems && menuItems.length > 0) {
           const mealLabels = config.mealTranslations[config.language] || config.mealTranslations.en
@@ -293,7 +327,9 @@ async function createWidget() {
       // Fetch lunch if enabled
       if (config.meals.includes("lunch")) {
         w.addSpacer(2)
-        const menuItems = await fetchMenu(displayDate, "lunch")
+        const menuItems = offlineMode ? 
+          await getCachedMenu(cacheKey, "lunch") :
+          await fetchMenuWithCache(displayDate, "lunch", cacheKey)
         
         if (menuItems && menuItems.length > 0) {
           const mealLabels = config.mealTranslations[config.language] || config.mealTranslations.en
@@ -308,7 +344,18 @@ async function createWidget() {
       }
     }
     
+    // Save successful data to cache for offline use (only if not in offline mode)
+    if (!offlineMode) {
+      await saveToCache(cacheKey, {
+        dayText: dayText,
+        specialsText: specialsText,
+        isSchoolDay: isSchoolDay,
+        lastUpdate: new Date().toISOString()
+      })
+    }
+    
   } catch (error) {
+    // Ultimate fallback - show minimal error info
     const generalLabels = config.generalTranslations[config.language] || config.generalTranslations.en
     const errorText = w.addText(generalLabels.error + " " + error.message)
     errorText.textColor = new Color(config.textColor)
@@ -329,12 +376,36 @@ async function getSchoolDay() {
     const response = await req.loadJSON()
     
     if (response.status === "success") {
-      const dayNumber = response.dayNumber
+      const baseDayNumber = response.dayNumber
       
       // Check if it's "No School Today"
-      if (dayNumber === "No School Today") {
+      if (baseDayNumber === "No School Today") {
         const generalLabels = config.generalTranslations[config.language] || config.generalTranslations.en
         return { dayText: generalLabels.noSchool, dayKey: null }
+      }
+      
+      // Check for date-specific override first
+      const today = new Date()
+      const dateStr = today.getFullYear() + "-" + 
+        String(today.getMonth() + 1).padStart(2, '0') + "-" + 
+        String(today.getDate()).padStart(2, '0')
+      
+      const schoolOverrides = config.schoolDateOverrides[config.school] || {}
+      const override = schoolOverrides[dateStr]
+      
+      let adjustedDayNumber
+      if (override) {
+        if (override === "closed") {
+          const generalLabels = config.generalTranslations[config.language] || config.generalTranslations.en
+          return { dayText: generalLabels.noSchool, dayKey: null }
+        }
+        // Extract number from "day-X" format
+        const dayMatch = override.match(/day-(\\d+)/)
+        adjustedDayNumber = dayMatch ? parseInt(dayMatch[1]) : parseInt(baseDayNumber)
+      } else {
+        // Apply school-specific offset
+        const schoolOffset = config.schoolDayOffsets[config.school] || 0
+        adjustedDayNumber = parseInt(baseDayNumber) + schoolOffset
       }
       
       // Determine day key based on school type
@@ -345,15 +416,16 @@ async function getSchoolDay() {
       if (school === "AMD" || school === "OHS") {
         // For AMD/OHS, convert day number to A/B
         // Odd days = A, Even days = B
-        const isOdd = parseInt(dayNumber) % 2 === 1
+        const isOdd = adjustedDayNumber % 2 === 1
         dayKey = isOdd ? "A" : "B"
         const generalLabels = config.generalTranslations[config.language] || config.generalTranslations.en
         dayText = \`\${generalLabels.day} \${dayKey}\`
       } else {
-        // For elementary/middle schools, use day number 1-6
-        dayKey = String(dayNumber)
+        // For elementary/middle schools, use day number 1-6 cycle
+        const cycleDayNumber = ((adjustedDayNumber - 1) % 6) + 1
+        dayKey = String(cycleDayNumber)
         const generalLabels = config.generalTranslations[config.language] || config.generalTranslations.en
-        dayText = \`\${generalLabels.day} \${dayNumber}\`
+        dayText = \`\${generalLabels.day} \${cycleDayNumber}\`
       }
       
       return { dayText, dayKey }
@@ -410,6 +482,63 @@ function getSpecials(dayKey) {
     const emoji = emojiMap[s] || ""
     return \`\${emoji}\${translatedName}\`
   }).join(" • ")
+}
+
+async function getCachedMenu(cacheKey, mealType) {
+  const cachedData = await loadFromCache(cacheKey)
+  if (cachedData && cachedData.menus && cachedData.menus[mealType]) {
+    return cachedData.menus[mealType]
+  }
+  return []
+}
+
+async function fetchMenuWithCache(date, mealType, cacheKey) {
+  try {
+    const menuItems = await fetchMenu(date, mealType)
+    
+    // Update cache with successful fetch
+    const existingCache = await loadFromCache(cacheKey) || {}
+    existingCache.menus = existingCache.menus || {}
+    existingCache.menus[mealType] = menuItems
+    existingCache.lastMenuUpdate = new Date().toISOString()
+    await saveToCache(cacheKey, existingCache)
+    
+    return menuItems
+  } catch (error) {
+    // Return cached menu data if available
+    const cachedData = await loadFromCache(cacheKey)
+    if (cachedData && cachedData.menus && cachedData.menus[mealType]) {
+      console.log(\`Using cached \${mealType} menu due to network error\`)
+      return cachedData.menus[mealType]
+    }
+    
+    console.error("Error fetching menu and no cached data: " + error.message)
+    return []
+  }
+}
+
+async function saveToCache(key, data) {
+  try {
+    const fm = FileManager.local()
+    const cachePath = fm.documentsDirectory() + "/" + key + ".json"
+    fm.writeString(cachePath, JSON.stringify(data))
+  } catch (error) {
+    console.log("Failed to save to cache: " + error.message)
+  }
+}
+
+async function loadFromCache(key) {
+  try {
+    const fm = FileManager.local()
+    const cachePath = fm.documentsDirectory() + "/" + key + ".json"
+    if (fm.fileExists(cachePath)) {
+      const cachedString = fm.readString(cachePath)
+      return JSON.parse(cachedString)
+    }
+  } catch (error) {
+    console.log("Failed to load from cache: " + error.message)
+  }
+  return null
 }
 
 async function fetchMenu(date, mealType) {
