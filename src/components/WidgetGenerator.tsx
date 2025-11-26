@@ -156,9 +156,7 @@ const config = {
       "offline": "Sin conexión"
     }
   },
-  schoolDayApiUrl: "https://script.google.com/macros/s/AKfycbyAHJSmnXM_-bPSuBJmS2xHSbsFN5lOZoZTECd0MHQmGUWDJsx90bKzoN0mF0f0cM7t/exec",
-  schoolDayOffsets: ${JSON.stringify(SCHOOL_DAY_OFFSETS)},
-  schoolDateOverrides: ${JSON.stringify(SCHOOL_DATE_OVERRIDES)}
+  schoolDayProxyUrl: "https://ossining-school-today.vercel.app/api/school-day"
 }
 
 // Widget code
@@ -372,60 +370,37 @@ async function createWidget() {
 
 async function getSchoolDay() {
   try {
-    const req = new Request(config.schoolDayApiUrl)
+    const req = new Request(config.schoolDayProxyUrl)
     const response = await req.loadJSON()
     
     if (response.status === "success") {
-      const baseDayNumber = response.dayNumber
+      const schoolData = response.schools[config.school]
       
-      // Check if it's "No School Today"
-      if (baseDayNumber === "No School Today") {
-        const generalLabels = config.generalTranslations[config.language] || config.generalTranslations.en
+      if (!schoolData) {
+        throw new Error("School not found in response")
+      }
+      
+      const generalLabels = config.generalTranslations[config.language] || config.generalTranslations.en
+      
+      // Check if school is closed
+      if (schoolData.dayNumber === "closed") {
         return { dayText: generalLabels.noSchool, dayKey: null }
       }
       
-      // Check for date-specific override first
-      const today = new Date()
-      const dateStr = today.getFullYear() + "-" + 
-        String(today.getMonth() + 1).padStart(2, '0') + "-" + 
-        String(today.getDate()).padStart(2, '0')
+      // Use the dayKey from the proxy
+      const dayKey = schoolData.dayKey
+      const dayNumber = schoolData.dayNumber
       
-      const schoolOverrides = config.schoolDateOverrides[config.school] || {}
-      const override = schoolOverrides[dateStr]
-      
-      let adjustedDayNumber
-      if (override) {
-        if (override === "closed") {
-          const generalLabels = config.generalTranslations[config.language] || config.generalTranslations.en
-          return { dayText: generalLabels.noSchool, dayKey: null }
-        }
-        // Extract number from "day-X" format
-        const dayMatch = override.match(/day-(\\d+)/)
-        adjustedDayNumber = dayMatch ? parseInt(dayMatch[1]) : parseInt(baseDayNumber)
-      } else {
-        // Apply school-specific offset
-        const schoolOffset = config.schoolDayOffsets[config.school] || 0
-        adjustedDayNumber = parseInt(baseDayNumber) + schoolOffset
-      }
-      
-      // Determine day key based on school type
+      // Format day text based on school type
       const school = config.school
-      let dayKey = ""
       let dayText = ""
       
       if (school === "AMD" || school === "OHS") {
-        // For AMD/OHS, convert day number to A/B
-        // Odd days = A, Even days = B
-        const isOdd = adjustedDayNumber % 2 === 1
-        dayKey = isOdd ? "A" : "B"
-        const generalLabels = config.generalTranslations[config.language] || config.generalTranslations.en
+        // High school: A/B format
         dayText = \`\${generalLabels.day} \${dayKey}\`
       } else {
-        // For elementary/middle schools, use day number 1-6 cycle
-        const cycleDayNumber = ((adjustedDayNumber - 1) % 6) + 1
-        dayKey = String(cycleDayNumber)
-        const generalLabels = config.generalTranslations[config.language] || config.generalTranslations.en
-        dayText = \`\${generalLabels.day} \${cycleDayNumber}\`
+        // Elementary: Day 1-6 format
+        dayText = \`\${generalLabels.day} \${dayKey}\`
       }
       
       return { dayText, dayKey }

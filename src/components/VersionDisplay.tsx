@@ -83,7 +83,7 @@ interface VersionModalProps {
 }
 
 function VersionModal({ onClose }: VersionModalProps) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     // Only close modal if clicking directly on the backdrop
@@ -154,7 +154,7 @@ function VersionModal({ onClose }: VersionModalProps) {
             alignItems: 'center',
             gap: '8px'
           }}>
-            📋 Release Notes
+            📋 {i18n.language === 'es' ? 'Notas de la Versión' : 'Release Notes'}
           </h2>
           <button
             onClick={onClose}
@@ -213,7 +213,9 @@ interface ReleaseCardProps {
 }
 
 function ReleaseCard({ release, isLatest }: ReleaseCardProps) {
+  const { t, i18n } = useTranslation()
   const [isExpanded, setIsExpanded] = useState(isLatest)
+  const isSpanish = i18n.language === 'es'
 
   const typeColors = {
     major: '#dc2626',
@@ -226,6 +228,11 @@ function ReleaseCard({ release, isLatest }: ReleaseCardProps) {
     minor: '✨',
     patch: '🔧'
   }
+
+  // Select appropriate language content
+  const features = isSpanish ? release.featuresEs : release.features
+  const improvements = isSpanish ? release.improvementsEs : release.improvements
+  const fixes = isSpanish ? release.fixesEs : release.fixes
 
   return (
     <div style={{
@@ -260,7 +267,7 @@ function ReleaseCard({ release, isLatest }: ReleaseCardProps) {
                   fontSize: '12px',
                   fontWeight: 'normal'
                 }}>
-                  LATEST
+                  {isSpanish ? 'ÚLTIMA' : 'LATEST'}
                 </span>
               )}
             </div>
@@ -290,39 +297,39 @@ function ReleaseCard({ release, isLatest }: ReleaseCardProps) {
 
       {isExpanded && (
         <div style={{ fontSize: '14px', lineHeight: '1.5', color: 'var(--fg)' }}>
-          {release.features.length > 0 && (
+          {features.length > 0 && (
             <div style={{ marginBottom: '12px' }}>
               <div style={{ fontWeight: 'bold', color: '#059669', marginBottom: '4px' }}>
-                ✨ New Features
+                {isSpanish ? '✨ Nuevas Funciones' : '✨ New Features'}
               </div>
               <ul style={{ margin: 0, paddingLeft: '20px', color: 'var(--fg)' }}>
-                {release.features.map((feature, i) => (
+                {features.map((feature, i) => (
                   <li key={i} style={{ marginBottom: '2px', color: 'var(--fg)' }}>{feature}</li>
                 ))}
               </ul>
             </div>
           )}
 
-          {release.improvements.length > 0 && (
+          {improvements.length > 0 && (
             <div style={{ marginBottom: '12px' }}>
               <div style={{ fontWeight: 'bold', color: '#2563eb', marginBottom: '4px' }}>
-                🔧 Improvements
+                {isSpanish ? '🔧 Mejoras' : '🔧 Improvements'}
               </div>
               <ul style={{ margin: 0, paddingLeft: '20px', color: 'var(--fg)' }}>
-                {release.improvements.map((improvement, i) => (
+                {improvements.map((improvement, i) => (
                   <li key={i} style={{ marginBottom: '2px', color: 'var(--fg)' }}>{improvement}</li>
                 ))}
               </ul>
             </div>
           )}
 
-          {release.fixes.length > 0 && (
+          {fixes.length > 0 && (
             <div>
               <div style={{ fontWeight: 'bold', color: '#dc2626', marginBottom: '4px' }}>
-                🐛 Bug Fixes
+                {isSpanish ? '🐛 Correcciones de Errores' : '🐛 Bug Fixes'}
               </div>
               <ul style={{ margin: 0, paddingLeft: '20px', color: 'var(--fg)' }}>
-                {release.fixes.map((fix, i) => (
+                {fixes.map((fix, i) => (
                   <li key={i} style={{ marginBottom: '2px', color: 'var(--fg)' }}>{fix}</li>
                 ))}
               </ul>

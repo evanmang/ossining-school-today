@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { encodeProfile, decodeProfile, Profile, School, MealType } from '../utils/profile'
 import WidgetGenerator from './WidgetGenerator'
+import AndroidWidgetGenerator from './AndroidWidgetGenerator'
 
 const SCHOOLS: School[] = ['Park','Brookside','Claremont','Roosevelt','AMD','OHS']
   const MEALS: MealType[] = ['breakfast','lunch']
@@ -224,6 +225,34 @@ export default function SetupForm(){
                 <button onClick={() => window.open(resultUrl, '_blank')}>Open URL</button>
               </div>
               <WidgetGenerator 
+                profile={{
+                  name: name || 'child',
+                  school,
+                  meals,
+                  specials: (() => {
+                    const finalSpecials: Record<string,string[]> = {}
+                    for(const key of Object.keys(specials)){
+                      const arr = specials[key] || []
+                      finalSpecials[key] = arr.map(s => s === 'Other' ? (custom[key] || 'Other') : s)
+                    }
+                    return finalSpecials
+                  })()
+                }}
+                encodedConfig={encodeProfile({
+                  name: name || 'child',
+                  school,
+                  meals,
+                  specials: (() => {
+                    const finalSpecials: Record<string,string[]> = {}
+                    for(const key of Object.keys(specials)){
+                      const arr = specials[key] || []
+                      finalSpecials[key] = arr.map(s => s === 'Other' ? (custom[key] || 'Other') : s)
+                    }
+                    return finalSpecials
+                  })()
+                })}
+              />
+              <AndroidWidgetGenerator 
                 profile={{
                   name: name || 'child',
                   school,

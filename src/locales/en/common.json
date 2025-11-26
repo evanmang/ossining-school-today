@@ -65,6 +65,24 @@
     "preview": "Preview",
     "previewNote": "(may appear slightly different on device)"
   },
+  "androidWidget": {
+    "comingSoon": "Coming Soon",
+    "create": "Create Android Widget",
+    "title": "Android Widget Generator (Coming Soon)",
+    "instructions": "Create a widget configuration for your Android device.",
+    "step1": "Install the Ossining School Today widget app from the ",
+    "step1Link": "Google Play Store",
+    "step1After": "",
+    "step2": "Copy the JSON configuration below",
+    "step3": "Open the widget app and paste the configuration",
+    "step4": "Add the widget to your home screen",
+    "step4Video": "Watch video tutorial",
+    "widgetColor": "Widget Color",
+    "colorText": "Text Color",
+    "download": "Download",
+    "preview": "Preview",
+    "previewNote": "(medium size shown)"
+  },
   "child": {
     "noProfile": "No profile provided. Use the setup page to create one.",
     "today": "Today:",

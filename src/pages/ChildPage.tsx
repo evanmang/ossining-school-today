@@ -171,15 +171,7 @@ export default function ChildPage(){
         
         return (
         <div key={m} style={{marginTop:12}}>
-          {fdmealplannerUrl ? (
-            <h3 style={{marginBottom:6}}>
-              <a href={fdmealplannerUrl} target="_blank" rel="noreferrer" style={{color:'#2563eb', textDecoration:'none'}}>
-                {t(`meals.${m}`)} ↗
-              </a>
-            </h3>
-          ) : (
-            <h3 style={{marginBottom:6}}>{t(`meals.${m}`)}</h3>
-          )}
+          <h3 style={{marginBottom:6}}>{t(`meals.${m}`)}</h3>
           {menus[m] && menus[m].length > 0 ? (
             // if items are objects with category/componentName, group by category
             (typeof menus[m][0] === 'object') ? (

@@ -4,9 +4,9 @@
  */
 
 export const VERSION_INFO = {
-  version: '2.1.0',
-  releaseDate: '2025-11-12',
-  codename: 'Offline-First',
+  version: '2.2.0',
+  releaseDate: '2025-11-16',
+  codename: 'Universal Widgets',
   buildNumber: Date.now()
 }
 
@@ -14,17 +14,65 @@ export interface ReleaseNote {
   version: string
   date: string
   codename?: string
+  codenameEs?: string
   type: 'major' | 'minor' | 'patch'
   features: string[]
+  featuresEs: string[]
   improvements: string[]
+  improvementsEs: string[]
   fixes: string[]
+  fixesEs: string[]
 }
 
 export const RELEASE_NOTES: ReleaseNote[] = [
   {
+    version: '2.2.0',
+    date: '2025-11-16',
+    codename: 'Universal Widgets',
+    codenameEs: 'Widgets Universales',
+    type: 'minor',
+    features: [
+      'Android widget support with native Kotlin implementation',
+      'Centralized school day proxy API for automatic updates',
+      'Spanish language support for all release notes',
+      'Dynamic day number calculation without widget code updates'
+    ],
+    featuresEs: [
+      'Soporte de widgets de Android con implementación nativa en Kotlin',
+      'API proxy centralizada de días escolares para actualizaciones automáticas',
+      'Soporte del idioma español para todas las notas de la versión',
+      'Cálculo dinámico del número de día sin actualizaciones de código de widget'
+    ],
+    improvements: [
+      'Widgets now fetch day numbers from centralized API',
+      'Manual school closure adjustments no longer require widget updates',
+      'Bilingual release notes with automatic language detection',
+      'Improved widget reliability across iOS and Android platforms',
+      'Removed fdmealplanner.com links from lunch and breakfast headers on the child page to avoid confusion with client-side routing.'
+    ],
+    improvementsEs: [
+      'Los widgets ahora obtienen números de día de API centralizada',
+      'Los ajustes manuales de cierres escolares ya no requieren actualizaciones de widgets',
+      'Notas de versión bilingües con detección automática de idioma',
+      'Mejor confiabilidad de widgets en plataformas iOS y Android',
+      'Se eliminaron los enlaces a fdmealplanner.com de los encabezados de almuerzo y desayuno en la página del niño para evitar confusión con el enrutamiento del lado del cliente.'
+    ],
+    fixes: [
+      'Fixed day number synchronization issues across different schools',
+      'Corrected widget behavior during individual school closures',
+      'Improved error handling in day calculation logic'
+    ],
+    fixesEs: [
+      'Corregidos problemas de sincronización de números de día entre diferentes escuelas',
+      'Corregido el comportamiento del widget durante cierres escolares individuales',
+      'Mejorado el manejo de errores en la lógica de cálculo de días'
+    ]
+  },
+  {
     version: '2.1.0',
     date: '2025-11-12',
     codename: 'Offline-First',
+    codenameEs: 'Sin Conexión',
     type: 'minor',
     features: [
       'Smart offline widget support - widgets now show cached data instead of errors',
@@ -32,20 +80,36 @@ export const RELEASE_NOTES: ReleaseNote[] = [
       'Visual admin interface for managing school day offsets',
       'Bilingual offline indicators (English/Spanish)'
     ],
+    featuresEs: [
+      'Soporte inteligente de widgets sin conexión - los widgets ahora muestran datos guardados en lugar de errores',
+      'Sistema de gestión de calendario escolar para cierres individuales',
+      'Interfaz de administración visual para gestionar ajustes de días escolares',
+      'Indicadores bilingües sin conexión (inglés/español)'
+    ],
     improvements: [
       'Enhanced widget reliability with persistent caching',
       'Better error handling across all components',
       'Comprehensive documentation for calendar system'
     ],
+    improvementsEs: [
+      'Mayor confiabilidad de widgets con almacenamiento en caché persistente',
+      'Mejor manejo de errores en todos los componentes',
+      'Documentación completa para el sistema de calendario'
+    ],
     fixes: [
       'Fixed widget crashes on poor network connections',
       'Improved cache management for menu data'
+    ],
+    fixesEs: [
+      'Corregidos los fallos de widgets con conexiones de red deficientes',
+      'Mejorada la gestión de caché para datos de menú'
     ]
   },
   {
     version: '2.0.0',
     date: '2025-11-11',
     codename: 'Multilingual',
+    codenameEs: 'Multilingüe',
     type: 'major',
     features: [
       'Complete Spanish language support',
@@ -53,21 +117,38 @@ export const RELEASE_NOTES: ReleaseNote[] = [
       'Enhanced widget generation with custom colors',
       'State preservation between setup and child pages'
     ],
+    featuresEs: [
+      'Soporte completo del idioma español',
+      'Encabezados de comida en los que se puede hacer clic vinculados a fdmealplanner',
+      'Generación mejorada de widgets con colores personalizados',
+      'Preservación del estado entre páginas de configuración e hijo'
+    ],
     improvements: [
       'Better widget preview with real menu data',
       'Improved navigation flow between pages',
       'Enhanced custom specials display'
     ],
+    improvementsEs: [
+      'Mejor vista previa de widgets con datos de menú reales',
+      'Flujo de navegación mejorado entre páginas',
+      'Visualización mejorada de especialidades personalizadas'
+    ],
     fixes: [
       'Fixed special subjects translation issues',
       'Corrected widget menu item limits',
       'Improved profile encoding/decoding'
+    ],
+    fixesEs: [
+      'Corregidos problemas de traducción de materias especiales',
+      'Corregidos límites de elementos del menú de widgets',
+      'Mejorada la codificación/decodificación de perfiles'
     ]
   },
   {
     version: '1.0.0',
     date: '2025-10-15',
     codename: 'Foundation',
+    codenameEs: 'Fundación',
     type: 'major',
     features: [
       'Initial release of Ossining School Today',
@@ -76,8 +157,17 @@ export const RELEASE_NOTES: ReleaseNote[] = [
       'Real-time menu integration with fdmealplanner',
       'Support for all Ossining schools (Elementary through High School)'
     ],
+    featuresEs: [
+      'Lanzamiento inicial de Ossining School Today',
+      'Creación y gestión de perfiles de estudiantes',
+      'Generación de widgets de iOS para horarios diarios',
+      'Integración de menú en tiempo real con fdmealplanner',
+      'Soporte para todas las escuelas de Ossining (desde Primaria hasta Secundaria)'
+    ],
     improvements: [],
-    fixes: []
+    improvementsEs: [],
+    fixes: [],
+    fixesEs: []
   }
 ]
 
