@@ -103,6 +103,24 @@
   "footer": {
     "copyright": "© 2025 Evan Mangiamele",
     "buy": "Buy me a coffee",
-    "github": "View on GitHub"
+    "github": "View on GitHub",
+    "privacy": "Privacy Policy"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "updated": "Last updated: {{date}}",
+    "intro": "Ossining School Today and its associated Android widget do not collect, store, or share any personal information from users. We do not use cookies, analytics, or any form of external tracking. All configuration data for widgets is stored locally on your device and is never transmitted to our servers or any third party.",
+    "nocollectTitle": "Information We Do Not Collect",
+    "nocollect1": "No names, email addresses, or contact information",
+    "nocollect2": "No device identifiers or location data",
+    "nocollect3": "No usage analytics or behavioral data",
+    "nocollect4": "No cookies or tracking pixels",
+    "usageTitle": "How Your Data is Used",
+    "usage": "All widget configuration and preferences are stored only on your device. The app and widget do not transmit any user data to external servers. Menu and schedule data is fetched anonymously from public APIs and is not linked to any individual user.",
+    "thirdpartyTitle": "Third-Party Services",
+    "thirdparty": "This app does not use any third-party analytics, advertising, or tracking services.",
+    "contactTitle": "Contact",
+    "contact": "If you have any questions about this privacy policy, please contact the developer at <a href=\"mailto:{{email}}\">{{email}}</a>.",
+    "backToSetup": "Back to setup page"
   }
 }

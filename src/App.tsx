@@ -2,9 +2,12 @@ import React, { useEffect, useRef } from 'react'
 import './i18n'
 import { useTranslation } from 'react-i18next'
 import { Analytics } from '@vercel/analytics/react'
+
 import SetupForm from './components/SetupForm'
 import ChildPage from './pages/ChildPage'
 import VersionDisplay from './components/VersionDisplay'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import PrivacyPolicyEs from './pages/PrivacyPolicyEs'
 
 function getPath(): string{
   return location.pathname || '/'
@@ -48,12 +51,12 @@ export default function App() {
           <h1>{t('header.title')}</h1>
         </div>
         <div style={{display:'flex', alignItems:'center', gap:12}}>
-          {getPath().startsWith('/child') && (
+          {(getPath().startsWith('/child') || getPath() === '/privacy' || getPath() === '/privacy-es') && (
             <a href={(() => {
               const params = new URLSearchParams(location.search)
               const cfg = params.get('cfg')
               return cfg ? `/?cfg=${cfg}` : '/'
-            })()} style={{fontSize:'0.9em', color:'#2563eb', textDecoration:'none'}}>← {t('setup.heading')}</a>
+            })()} style={{fontSize:'0.9em', color:'#2563eb', textDecoration:'none'}}>← {getPath().startsWith('/child') ? t('setup.heading') : t('privacy.backToSetup')}</a>
           )}
           <div>
             <button onClick={()=>setLang('en')} style={{marginRight:6,opacity:i18n.language==='en'?1:0.6}}>EN</button>
@@ -62,15 +65,20 @@ export default function App() {
         </div>
       </header>
 
+
       <main>
-        { getPath().startsWith('/child') ? (
-          <ChildPage />
-        ) : (
-          <section>
-            <h2>{t('setup.heading')}</h2>
-            <SetupForm />
-          </section>
-        ) }
+        {(() => {
+          const path = getPath()
+          if (path === '/privacy') return <PrivacyPolicy />
+          if (path === '/privacy-es') return <PrivacyPolicyEs />
+          if (path.startsWith('/child')) return <ChildPage />
+          return (
+            <section>
+              <h2>{t('setup.heading')}</h2>
+              <SetupForm />
+            </section>
+          )
+        })()}
       </main>
 
       <footer className="site-footer">
@@ -79,6 +87,10 @@ export default function App() {
           <br />
           <a href="https://github.com/evanmang/ossining-school-today" target="_blank" rel="noreferrer" style={{fontSize:'0.85em', color:'#2563eb', textDecoration:'none'}}>
             {t('footer.github')}
+          </a>
+          <br />
+          <a href={i18n.language === 'es' ? '/privacy-es' : '/privacy'} style={{fontSize:'0.85em', color:'#2563eb', textDecoration:'none'}}>
+            {t('footer.privacy')}
           </a>
         </div>
         <div>

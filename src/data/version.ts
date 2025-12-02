@@ -26,6 +26,31 @@ export interface ReleaseNote {
 
 export const RELEASE_NOTES: ReleaseNote[] = [
   {
+    version: '2.3.0',
+    date: '2025-12-02',
+    codename: 'Privacy & Compliance',
+    codenameEs: 'Privacidad y Cumplimiento',
+    type: 'minor',
+    features: [
+      'Added a dedicated Privacy Policy page, accessible in both English and Spanish',
+      'Privacy policy link now appears in the footer and header, with full language switching support'
+    ],
+    featuresEs: [
+      'Se agregó una página dedicada de Política de Privacidad, accesible en inglés y español',
+      'El enlace a la política de privacidad ahora aparece en el pie de página y encabezado, con soporte completo de idioma'
+    ],
+    improvements: [
+      'Navigation to the privacy policy page now works seamlessly in local development and production',
+      'Language switching on the privacy policy page updates all content instantly'
+    ],
+    improvementsEs: [
+      'La navegación a la página de política de privacidad ahora funciona perfectamente en desarrollo local y producción',
+      'El cambio de idioma en la página de política de privacidad actualiza todo el contenido al instante'
+    ],
+    fixes: [],
+    fixesEs: []
+  },
+  {
     version: '2.2.0',
     date: '2025-11-16',
     codename: 'Universal Widgets',
