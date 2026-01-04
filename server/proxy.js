@@ -114,8 +114,30 @@ app.get('/fdmenu', async (req, res) => {
 
     // Manual fallback
     const dateKey = date.toISOString().slice(0,10)
-    const school = req.query.school || ''
-    const meal = req.query.meal || ''
+    // Infer school and meal from account code if not provided
+    let school = req.query.school || ''
+    let meal = req.query.meal || ''
+    if ((!school || !meal) && parts.length === 3) {
+      const SCHOOL_MEAL_CODES = {
+        '152/833/1': { school: 'Park', meal: 'breakfast' },
+        '152/833/2': { school: 'Park', meal: 'lunch' },
+        '152/832/1': { school: 'Brookside', meal: 'breakfast' },
+        '152/832/2': { school: 'Brookside', meal: 'lunch' },
+        '152/831/1': { school: 'Claremont', meal: 'breakfast' },
+        '152/831/2': { school: 'Claremont', meal: 'lunch' },
+        '152/834/1': { school: 'Roosevelt', meal: 'breakfast' },
+        '152/834/2': { school: 'Roosevelt', meal: 'lunch' },
+        '152/830/1': { school: 'AMD', meal: 'breakfast' },
+        '152/830/2': { school: 'AMD', meal: 'lunch' },
+        '152/829/1': { school: 'OHS', meal: 'breakfast' },
+        '152/829/2': { school: 'OHS', meal: 'lunch' }
+      }
+      const code = `${parts[0]}/${parts[1]}/${parts[2]}`
+      if (SCHOOL_MEAL_CODES[code]) {
+        school = SCHOOL_MEAL_CODES[code].school
+        meal = SCHOOL_MEAL_CODES[code].meal
+      }
+    }
     // Try to match by date, school, meal, lang
     let fallbackItems = []
     if(MANUAL_MENU[dateKey] && MANUAL_MENU[dateKey][school] && MANUAL_MENU[dateKey][school][meal] && MANUAL_MENU[dateKey][school][meal][lang]){
