@@ -1,0 +1,1280 @@
+{
+  "2026-01-05": {
+    "AMD": {
+      "breakfast": {
+        "en": [
+          "Apple Strudel & Whole Grain Bagel with Cream Cheese",
+          "Blueberry Muffin",
+          "Fresh Orange",
+          "100% Apple Juice"
+        ],
+        "es": [
+          "Apple Strudel",
+          "WG Bagel with Cream Cheese",
+          "Muffin de arandanos",
+          "Naranja Fresca",
+          "Jugo De Manzana"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Homemade Baked Pasta with Cheese",
+          "Whole Wheat Dinner Roll",
+          "Beef Hot Dog on Bun",
+          "Steamed Broccoli",
+          "Grape Tomatoes",
+          "Fresh Orange",
+          "100% Juice Fruit Punch"
+        ],
+        "es": [
+          "Pasta casera con Queso al Horno",
+          "Rollo Integral",
+          "Perro Caliente de la Carne",
+          "en un Panecillo",
+          "Brocoli Cocido Al Vapor",
+          "Tomates Pequenos",
+          "Naranja Fresca",
+          "Fruit Punch"
+        ]
+      }
+    },
+    "Brookside": {
+      "breakfast": {
+        "en": [
+          "Mini Maple Flavored Waffles",
+          "Apple Slices",
+          "Orange 100% Juice",
+          "Unflavored 1% Milk"
+        ],
+        "es": [
+          "Mini gofres con sabor a arce Rebanadas De Manazanas",
+          "Jugo de Naranja",
+          "Unflavored Leche 1%"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Mozzarella Sticks V",
+          "Marinara Sauce",
+          "Green Beans",
+          "Carrot Dippers",
+          "Apple Slices",
+          "Blueberries"
+        ],
+        "es": [
+          "Palitos de Queso",
+          "Mozzarella",
+          "Marinara Sauce",
+          "Frijoles Verdes",
+          "Palitos de Zanahorias",
+          "Rebanadas De Manazanas",
+          "Arandanos"
+        ]
+      }
+    },
+    "Claremont": {
+      "breakfast": {
+        "en": [
+          "Mini Maple Flavored Waffles",
+          "Apple Slices",
+          "Orange 100% Juice",
+          "Unflavored 1% Milk"
+        ],
+        "es": [
+          "Mini gofres con sabor a arce Rebanadas De Manazanas",
+          "Jugo de Naranja",
+          "Unflavored Leche 1%"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Mozzarella Sticks V",
+          "Marinara Sauce",
+          "Green Beans",
+          "Carrot Dippers",
+          "Apple Slices",
+          "Blueberries"
+        ],
+        "es": [
+          "Palitos de Queso",
+          "Mozzarella",
+          "Marinara Sauce",
+          "Frijoles Verdes",
+          "Palitos de Zanahorias",
+          "Rebanadas De Manazanas",
+          "Arandanos"
+        ]
+      }
+    },
+    "OHS": {
+      "breakfast": {
+        "en": [
+          "Bacon, Egg and Cheese Breakfast Sandwich",
+          "Turkey Bacon",
+          "Fresh Apple",
+          "100% Grape Juice"
+        ],
+        "es": [
+          "Sandwich de Huevo Tocino y Queso,",
+          "Tocino de Pavo",
+          "Manzana Fresca",
+          "100% jugo de uva"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Turkey & Cheese Panini",
+          "American Combo Sandwich",
+          "Homemade Baked Pasta with Cheese",
+          "Roasted Broccoli",
+          "Whole Wheat Dinner Roll",
+          "Brown Rice and WC",
+          "Chicken Parmesan Sandwich",
+          "Mozzarella Sticks",
+          "Baked Potato Wedges",
+          "Veggabol BBQ Chickpea Rice Bowl",
+          "NY Fruity Yogurt Parfait with Granola",
+          "Apple Slices",
+          "Classic Greek Salad",
+          "Mixed Kale Side Salad",
+          "Cucumber Coins",
+          "Grape Tomatoes",
+          "Green Pepper Slices",
+          "Black Beans",
+          "Pepper & Onion",
+          "Pizza",
+          "Cheese Pizza"
+        ],
+        "es": [
+          "Panini De Pavo Y Queso Sandwich Americano",
+          "Pasta casera con Queso al Horno",
+          "Roasted Broccoli",
+          "Rollo Integral",
+          "Sandwich de Pollo Parmesano",
+          "Palitos de Queso Mozzarella",
+          "Rodajas de Papas Horneadas",
+          "Tazon de Arroz con Garbanzos BBQ",
+          "Veggabol",
+          "NY Fruity Yogurt Parfait with Granola Rebanadas De Manazanas",
+          "Ensalada Griega",
+          "Ensalada de Kale",
+          "Rodajas de Pepinos",
+          "Tomates Pequenos",
+          "Rebanadas de Pimientos Verdes Frijoles",
+          "Pizza con Pimientos y Cebollas",
+          "Pizza de Queso"
+        ]
+      }
+    },
+    "Park": {
+      "breakfast": {
+        "en": [
+          "Mini Maple Flavored Waffles",
+          "Apple Slices",
+          "Orange 100% Juice",
+          "Unflavored 1% Milk"
+        ],
+        "es": [
+          "Mini gofres con sabor a arce Rebanadas De Manazanas",
+          "Jugo de Naranja",
+          "Unflavored Leche 1%"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Mozzarella Sticks",
+          "Tomato Sauce Dip",
+          "Not-A-Nut Butter & Jelly Sandwich",
+          "Steamed Carrots",
+          "Carrot Dippers",
+          "Apple Slices",
+          "Sliced Oranges"
+        ],
+        "es": [
+          "Palitos de Queso Mozzarella",
+          "Salsa de Tomate",
+          "Sandwich de mantequilla y jalea sin nueces",
+          "Zanahorias",
+          "Palitos de Zanahorias",
+          "Rebanadas De Manazanas",
+          "Naranja en Rodajas"
+        ]
+      }
+    },
+    "Roosevelt": {
+      "breakfast": {
+        "en": [
+          "Mini Maple Flavored Waffles",
+          "Apple Slices",
+          "Orange 100% Juice",
+          "Unflavored 1% Milk"
+        ],
+        "es": [
+          "Mini gofres con sabor a arce Rebanadas De Manazanas",
+          "Jugo de Naranja",
+          "Unflavored Leche 1%"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Mozzarella Sticks V",
+          "Marinara Sauce",
+          "Green Beans",
+          "Carrot Dippers",
+          "Apple Slices",
+          "Blueberries"
+        ],
+        "es": [
+          "Palitos de Queso",
+          "Mozzarella",
+          "Marinara Sauce",
+          "Frijoles Verdes",
+          "Palitos de Zanahorias",
+          "Rebanadas De Manazanas",
+          "Arandanos"
+        ]
+      }
+    }
+  },
+  "2026-01-06": {
+    "AMD": {
+      "breakfast": {
+        "en": [
+          "Mini Maple Flavored Waffles",
+          "Scrambled Eggs",
+          "Apple Strudel",
+          "Applesauce",
+          "100% Grape Juice"
+        ],
+        "es": [
+          "Mini gofres con sabor a arce",
+          "Huevos Revueltos",
+          "Apple Strudel",
+          "Pure de Manzana",
+          "100% jugo de uva"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Crispy Chicken Sandwich",
+          "Two Cheese Grilled Cheese",
+          "Sweet Potato Fries",
+          "Carrot Dippers",
+          "Garden Salad",
+          "Fresh Apple",
+          "100% Grape Juice"
+        ],
+        "es": [
+          "Sandwich de Pollo Crujiente",
+          "Sandwich de Queso Asado",
+          "Patatas Dulces Fritas",
+          "Palitos de Zanahorias",
+          "Ensalada De Verduras",
+          "Manzana Fresca",
+          "100% jugo de uva"
+        ]
+      }
+    },
+    "Brookside": {
+      "breakfast": {
+        "en": [
+          "WG Honey Bear",
+          "Graham Crackers",
+          "Cocoa Puffs Cereal Bar",
+          "100% Juice Fruit Punch",
+          "Sliced Oranges",
+          "Unflavored 1% Milk"
+        ],
+        "es": [
+          "Galletas de Ositos de Vainilla",
+          "Barra De Cereal Bolitas de Cocoa",
+          "Fruit Punch",
+          "Naranja en Rodajas",
+          "Unflavored Leche 1%"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Crispy Chicken Sandwich",
+          "Sweet Potato Fries",
+          "Cucumber Coins",
+          "Apple Slices",
+          "Slice ranges"
+        ],
+        "es": [
+          "Sandwich de Pollo Crujiente",
+          "Patatas Dulces Fritas",
+          "Rodajas de Pepinos",
+          "Rebanadas De Manazanas",
+          "Naranja en Rodajas"
+        ]
+      }
+    },
+    "Claremont": {
+      "breakfast": {
+        "en": [
+          "WG Honey Bear",
+          "Graham Crackers",
+          "Cocoa Puffs Cereal Bar",
+          "100% Juice Fruit Punch",
+          "Sliced Oranges",
+          "Unflavored 1% Milk"
+        ],
+        "es": [
+          "Galletas de Ositos de Vainilla",
+          "Barra De Cereal Bolitas de Cocoa",
+          "Fruit Punch",
+          "Naranja en Rodajas",
+          "Unflavored Leche 1%"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Crispy Chicken Sandwich",
+          "Sweet Potato Fries",
+          "Cucumber Coins",
+          "Apple Slices",
+          "Slice ranges"
+        ],
+        "es": [
+          "Sandwich de Pollo Crujiente",
+          "Patatas Dulces Fritas",
+          "Rodajas de Pepinos",
+          "Rebanadas De Manazanas",
+          "Naranja en Rodajas"
+        ]
+      }
+    },
+    "OHS": {
+      "breakfast": {
+        "en": [
+          "Sausage, Egg and Cheese Sandwich",
+          "Sausage Patty",
+          "Fresh Orange",
+          "100% Grape Juice"
+        ],
+        "es": [
+          "Sandwich de salchicha, huevo y queso",
+          "Salchicha de Pavo",
+          "Naranja Fresca",
+          "100% jugo de uva"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Chicken Delight Wrap",
+          "Turkey & Cheese Panini",
+          "Spicy Beef",
+          "Brown Rice",
+          "Sweet Corn",
+          "Cheese Sauce",
+          "Refried Beans",
+          "Tortilla Chips",
+          "Sour Cream",
+          "Salsa",
+          "Chicken Fajita Wrap",
+          "Two Cheese Quesadilla",
+          "Baked Potato Wedges",
+          "NY Fruity Yogurt Parfait with Granola",
+          "Veggabol BBQ Chickpea Rice Bowl",
+          "Crispy Chicken",
+          "Garden Salad",
+          "California Sushi Roll",
+          "Fresh Orange",
+          "Romaine Lettuce",
+          "Caramelized Apples with Tri-color Quinoa",
+          "Mixed Kale Side Salad",
+          "Garbanzo Beans",
+          "Grape Tomatoes",
+          "Black Beans",
+          "Cheese Pizza",
+          "BBQ Chicken Pizza",
+          "Pepperoni Pizza"
+        ],
+        "es": [
+          "Tortilla de Delicia de Pollo",          
+          "Panini De Pavo Y Queso",
+          "Carne Picante",
+          "Arroz Integral",
+          "Maiz",
+          "Salsa de Queso",
+          "Frijoles Refritos",
+          "Chips de Tortilla",
+          "Crujientes",
+          "Crema Agria",
+          "Salsa",
+          "Nacho Bar",
+          "Fajita Enrollada Con Pollo",
+          "Quesadillas De Dos Queso",
+          "Rodajas de Papas Horneadas",
+          "NY Fruity Yogurt Parfait with Granola",
+          "Tazon de Arroz con Garbanzos BBQ",
+          "Veggabol",
+          "Ensalada De Pollo",
+          "Naranja Fresca",
+          "Lechuga",
+          "Manzanas",
+          "caramelizadas con tres colores Quinoa",
+          "Ensalada de Kale",
+          "Garbanzos",
+          "Tomates Pequenos",
+          "Frijoles",
+          "Pizza de Queso",
+          "Pizza de Pollo BBQ",
+          "Pizza de Pepperoni"
+        ]
+      }
+    },
+    "Park": {
+      "breakfast": {
+        "en": [
+          "WG Honey Bear",
+          "Graham Crackers",
+          "Cocoa Puffs Cereal Bar",
+          "100% Juice Fruit Punch",
+          "Sliced Oranges",
+          "Unflavored 1% Milk"
+        ],
+        "es": [
+          "Galletas de Ositos de Vainilla",
+          "Barra De Cereal Bolitas de Cocoa",
+          "Fruit Punch",
+          "Naranja en Rodajas",
+          "Unflavored Leche 1%"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Beef Hot Dog on Bun",
+          "Cheese Sandwich",
+          "Sweet Potato Fries",
+          "Celery",
+          "Apple Slices",
+          "Sliced Oranges"
+        ],
+        "es": [
+          "Perro Caliente de la Carne en un Panecillo",
+          "perro caliente en un panecillo",
+          "Sandwich de Queso",
+          "Patatas Dulces Fritas Apio",
+          "Rebanadas De Manazanas",
+          "Naranja en Rodajas"
+        ]
+      }
+    },
+    "Roosevelt": {
+      "breakfast": {
+        "en": [
+          "WG Honey Bear",
+          "Graham Crackers",
+          "Cocoa Puffs Cereal Bar",
+          "100% Juice Fruit Punch",
+          "Sliced Oranges",
+          "Unflavored 1% Milk"
+        ],
+        "es": [
+          "Galletas de Ositos de Vainilla",
+          "Barra De Cereal Bolitas de Cocoa",
+          "Fruit Punch",
+          "Naranja en Rodajas",
+          "Unflavored Leche 1%"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Crispy Chicken Sandwich",
+          "Sweet Potato Fries",
+          "Cucumber Coins",
+          "Apple Slices",
+          "Slice ranges"
+        ],
+        "es": [
+          "Sandwich de Pollo Crujiente",
+          "Patatas Dulces Fritas",
+          "Rodajas de Pepinos",
+          "Rebanadas De Manazanas",
+          "Naranja en Rodajas"
+        ]
+      }
+    }
+  },
+  "2026-01-07": {
+    "AMD": {
+      "breakfast": {
+        "en": [
+          "Sausage, Egg and Cheese Sandwich",
+          "Sausage Patty",
+          "Whole Grain Bagel with Cream Cheese",
+          "Fresh Apple",
+          "Orange 100% Juice"
+        ],
+        "es": [
+          "Sandwich de salchicha, huevo y queso",
+          "Salchicha de Pavo",
+          "WG Bagel with Cream Cheese",
+          "Manzana Fresca",
+          "Jugo de Naranja"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Spicy Turkey",
+          "Brown Rice",
+          "Tortilla Chips",
+          "Cheesy Stuffed Bread Sticks",
+          "Sweet Corn",
+          "Black Beans",
+          "Grape Tomatoes",
+          "Fresh Orange",
+          "Fresh Banana"
+        ],
+        "es": [
+          "Pavo picante",
+          "Arroz Integral",
+          "Chips de Tortilla Crujientes",
+          "Palitos de pan Rellenos de Queso",
+          "Maiz",
+          "Frijoles",
+          "Tomates Pequenos",
+          "Naranja Fresca",
+          "Banana Fresca"
+        ]
+      }
+    },
+    "Brookside": {
+      "breakfast": {
+        "en": [
+          "Blueberry Muffin",
+          "Fresh Banana",
+          "100% Apple Juice",
+          "Unflavored 1% Milk"
+        ],
+        "es": [
+          "Muffin de arandanos",
+          "Banana Fresca",
+          "Jugo De Manzana",
+          "Unflavored Leche 1%"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Grilled Cheese Sandwich",
+          "Oven Baked Fries",
+          "Celery Sticks",
+          "Pineapple",
+          "Fresh Pear"
+        ],
+        "es": [
+          "Pan Tostado con Queso",
+          "sanguche a la parrilla con queso",
+          "Papas fritas al horno",
+          "Palitos de Apio",
+          "Pina",
+          "Pera Fresca"
+        ]
+      }
+    },
+    "Claremont": {
+      "breakfast": {
+        "en": [
+          "Blueberry Muffin",
+          "Fresh Banana",
+          "100% Apple Juice",
+          "Unflavored 1% Milk"
+        ],
+        "es": [
+          "Muffin de arandanos",
+          "Banana Fresca",
+          "Jugo De Manzana",
+          "Unflavored Leche 1%"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Grilled Cheese Sandwich",
+          "Oven Baked Fries",
+          "Celery Sticks",
+          "Pineapple",
+          "Fresh Pear"
+        ],
+        "es": [
+          "Pan Tostado con Queso",
+          "sanguche a la parrilla con queso",
+          "Papas fritas al horno",
+          "Palitos de Apio",
+          "Pina",
+          "Pera Fresca"
+        ]
+      }
+    },
+    "OHS": {
+      "breakfast": {
+        "en": [
+          "Bacon, Egg and Cheese Breakfast Sandwich",
+          "Fresh Banana",
+          "100% Orange",
+          "Tangerine"
+        ],
+        "es": [
+          "Sandwich de Huevo, Tocino y Queso",
+          "Banana Fresca",
+          "100% Naranja",
+          "Mandarina"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Turkey & Cheese Panini",
+          "Ham & Cheese Panini",
+          "Herb Roasted Chicken",
+          "Roasted Butternut Squash",
+          "Yellow Rice",
+          "Whole Wheat Dinner Roll",
+          "Hot Pressed Cubano Sandwich",
+          "Grilled Cheese Sandwich",
+          "Baked Potato Wedges",
+          "Veggabol BBQ Chickpea Rice Bowl",
+          "NY Fruity Yogurt Parfait with Granola",
+          "California Sushi Roll",
+          "Fresh Banana",
+          "Romaine Lettuce",
+          "Caramelized Apples with Tri-color Quinoa",
+          "Mixed Kale Side Salad",
+          "Cucumber Coins",
+          "Grape Tomatoes",
+          "Cheese Pizza",
+          "Pepper & Onion",
+          "Pizza",
+          "Pepperoni Pizza",
+          "Homemade Chicken & Cheese Stromboli"
+        ],
+        "es": [
+          "Panini De Pavo Y Queso",
+          "Panini de Jamon y Queso",
+          "Pollo al Horno",
+          "Calabaza Butternut",
+          "Asada",
+          "Arroz Amarillo",
+          "Rollo Integral",
+          "Hot Pressed Cubano Sandwich",
+          "Pan Tostado con Queso",
+          "Rodajas de Papas Horneadas",
+          "Irguesa, Hamburgu",
+          "Tazon de Arroz con Garbanzos BBQ Veggabol",
+          "NY Fruity Yogurt Parfait with Granola",
+          "Rollo Sushi California",
+          "Banana Fresca",
+          "Lechuga",
+          "Manzanas",
+          "caramelizadas con tres colores Quinoa",
+          "Ensalada de Kale",
+          "Rodajas de Pepinos",
+          "Tomates Pequenos",
+          "Pizza de Queso",
+          "Pizza con Pimientos y Cebollas",
+          "Pizza de Pepperoni"
+        ]
+      }
+    },
+    "Park": {
+      "breakfast": {
+        "en": [
+          "Blueberry Muffin",
+          "Fresh Banana",
+          "100% Apple Juice",
+          "Unflavored 1% Milk"
+        ],
+        "es": [
+          "Muffin de arandanos",
+          "Banana Fresca",
+          "Jugo De Manzana",
+          "Unflavored Leche 1%"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Grilled Cheese Sandwich",
+          "Not-A-Nut Butter & Jelly Sandwich",
+          "Crispy Potato Puffs",
+          "Garbanzo Beans",
+          "Applesauce",
+          "Pineapple"
+        ],
+        "es": [
+          "Pan Tostado con Queso",
+          "Sandwich de mantequilla y jalea sin nueces",
+          "Bolitas de Papas",
+          "Garbanzos",
+          "Pure de Manzana",
+          "Pina"
+        ]
+      }
+    },
+    "Roosevelt": {
+      "breakfast": {
+        "en": [
+          "Blueberry Muffin",
+          "Fresh Banana",
+          "100% Apple Juice",
+          "Unflavored 1% Milk"
+        ],
+        "es": [
+          "Muffin de arandanos",
+          "Banana Fresca",
+          "Jugo De Manzana",
+          "Unflavored Leche 1%"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Grilled Cheese Sandwich",
+          "Oven Baked Fries",
+          "Celery Sticks",
+          "Pineapple",
+          "Fresh Pear"
+        ],
+        "es": [
+          "Pan Tostado con Queso",
+          "sanguche a la parrilla con queso",
+          "Papas fritas al horno",
+          "Palitos de Apio",
+          "Pina",
+          "Pera Fresca"
+        ]
+      }
+    }
+  },
+  "2026-01-08": {
+    "AMD": {
+      "breakfast": {
+        "en": [
+          "Whole Grain French",
+          "Toast Slices",
+          "Apple Strudel",
+          "Whole Grain Bagel",
+          "with Cream Cheese",
+          "Fresh Banana",
+          "100% Juice Fruit",
+          "Punch"
+        ],
+        "es": [
+          "Tostada Francesa",
+          "Apple Strudel",
+          "WG Bagel with",
+          "Cream Cheese",
+          "Banana Fresca",
+          "Fruit Punch"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Chicken with Gravy",
+          "Mashed Potatoes",
+          "Whole Wheat Dinner Roll",
+          "Chicken & Cheese Quesadilla",
+          "Roasted Butternut Squash",
+          "Chilled Red Pepper Strips",
+          "Spinach Salad",
+          "100% Orange Tangerine",
+          "Fresh Pear"
+        ],
+        "es": [
+          "Pollo con Salsa",
+          "Pure De Papas",
+          "Rollo Integral",
+          "Quesadilla De Pollo",
+          "Calabaza Butternut Asada",
+          "Tiras De Pimiento Rojo",
+          "Ensalada de Espinaca",
+          "100% Naranja Mandarina",
+          "Pera Fresca"
+        ]
+      }
+    },
+    "Brookside": {
+      "breakfast": {
+        "en": [
+          "Whole Grain Bagel",
+          "Cream Cheese",
+          "Apple Slices",
+          "100% Grape Juice",
+          "Unflavored 1% Milk"
+        ],
+        "es": [
+          "Whole Grain Bagel",
+          "Queso Crema",
+          "Rebanadas De Manazanas",
+          "100% jugo de uva",
+          "Unflavored Leche 1%"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Turkey Crispy Tacos",
+          "Brown Rice",
+          "Sweet Corn",
+          "Garbanzo Beans",
+          "Fresh Banana",
+          "Sliced Oranges"
+        ],
+        "es": [
+          "Turkey Tacos",
+          "Arroz Integral",
+          "Maiz",
+          "Garbanzos",
+          "Banana Fresca",
+          "Naranja en Rodajas"
+        ]
+      }
+    },
+    "Claremont": {
+        "breakfast": {
+          "en": [
+            "Whole Grain Bagel",
+            "Cream Cheese",
+            "Apple Slices",
+            "100% Grape Juice",
+            "Unflavored 1% Milk"
+          ],
+          "es": [
+            "Whole Grain Bagel",
+            "Queso Crema",
+            "Rebanadas De Manazanas",
+            "100% jugo de uva",
+            "Unflavored Leche 1%"
+          ]
+        },
+        "lunch": {
+          "en": [
+            "Turkey Crispy Tacos",
+            "Brown Rice",
+            "Sweet Corn",
+            "Garbanzo Beans",
+            "Fresh Banana",
+            "Sliced Oranges"
+          ],
+          "es": [
+            "Turkey Tacos",
+            "Arroz Integral",
+            "Maiz",
+            "Garbanzos",
+            "Banana Fresca",
+            "Naranja en Rodajas"
+          ]
+        }
+      },
+    "OHS": {
+      "breakfast": {
+        "en": [
+          "Sausage, Egg and Cheese Sandwich",
+          "Sausage Patty",
+          "100% Juice Fruit",
+          "Punch",
+          "Fresh Apple"
+        ],
+        "es": [
+          "Sandwich de salchicha, huevo y queso",
+          "Salchicha de Pavo",
+          "Fruit Punch",
+          "Manzana Fresca"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Balsamic Grilled Chicken Panini",
+          "Turkey & Cheese Panini",
+          "Yard Bird Classic Chicken Sandwich",
+          "Oven Baked Fries",
+          "New Yorker Panini",
+          "Bagel Melt",
+          "Baked Potato Wedges",
+          "Sweet Potato Fries",
+          "Berry Acai Bowl",
+          "Animal Crackers",
+          "Crispy Chicken",
+          "Garden Salad",
+          "Graham Crackers",
+          "Pineapple",
+          "Romaine Lettuce",
+          "Caramelized Apples with Tri-color Quinoa",
+          "Mixed Kale Side Salad",
+          "Cucumber Coins",
+          "Garbanzo Beans",
+          "Grape Tomatoes",
+          "Cheese Pizza",
+          "Pepperoni Pizza",
+          "Chicken Pizza"
+        ],
+        "es": [
+          "Panini de Pollo con Vinagre Balsamico",
+          "Panini De Pavo Y queso, pan de trigo",
+          "Yard Bird Classic Chicken Sandwich",
+          "Papas fritas al horno",
+          "Panini a la Nueva York",
+          "Bagel con Queso Derretido",
+          "Rodajas de Papas Horneadas",
+          "Patatas Dulces Fritas",
+          "Yogur con Acai y Granola",
+          "Ensalada De Pollo",
+          "Galletas de Vainilla",
+          "salada de Caesar. li",
+          "Pina",
+          "Lechuga",
+          "Manzanas",
+          "caramelizadas con tres colores Quinoa",
+          "Ensalada de Kale",
+          "Rodajas de Pepinos",
+          "Garbanzos",
+          "Tomates Pequenos",
+          "Pizza de Queso",
+          "Pizza de Pepperoni",
+          "Pizza de Pollo"
+        ]
+      }
+    },
+    "Park": {
+      "breakfast": {
+        "en": [
+          "Whole Grain Bagel",
+          "Cream Cheese",
+          "Apple Slices",
+          "100% Grape Juice",
+          "Unflavored 1% Milk"
+        ],
+        "es": [
+          "Whole Grain Bagel",
+          "Queso Crema",
+          "Rebanadas De Manazanas",
+          "100% jugo de uva",
+          "Unflavored Leche 1%"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Turkey Taco Filling",
+          "Brown Rice",
+          "Tortilla Chips",
+          "Sweet Corn",
+          "Yogurt Lunch",
+          "Carrot Dippers",
+          "Fresh Banana",
+          "Apple Slices"
+        ],
+        "es": [
+          "Pavo Picante",
+          "Arroz Integral",
+          "Chips de Tortilla Crujientes",
+          "Maiz",
+          "Almuerzo de yogur",
+          "Palitos de Zanahorias",
+          "Banana Fresca",
+          "Rebanadas De Manazahas"
+        ]
+      }
+    },
+    "Roosevelt": {
+        "breakfast": {
+          "en": [
+            "Whole Grain Bagel",
+            "Cream Cheese",
+            "Apple Slices",
+            "100% Grape Juice",
+            "Unflavored 1% Milk"
+          ],
+          "es": [
+            "Whole Grain Bagel",
+            "Queso Crema",
+            "Rebanadas De Manazanas",
+            "100% jugo de uva",
+            "Unflavored Leche 1%"
+          ]
+        },
+        "lunch": {
+          "en": [
+            "Turkey Crispy Tacos",
+            "Brown Rice",
+            "Sweet Corn",
+            "Garbanzo Beans",
+            "Fresh Banana",
+            "Sliced Oranges"
+          ],
+          "es": [
+            "Turkey Tacos",
+            "Arroz Integral",
+            "Maiz",
+            "Garbanzos",
+            "Banana Fresca",
+            "Naranja en Rodajas"
+          ]
+        }
+      }
+  },
+  "2026-01-09": {
+    "AMD": {
+      "breakfast": {
+        "en": [
+          "Egg and Cheese Sandwich",
+          "Mini Blueberry Pancakes",
+          "Whole Grain Bagel with Cream Cheese",
+          "Fresh Apple",
+          "100% Grape Juice"
+        ],
+        "es": [
+          "Sandwich De Huevo Y Queso",
+          "Mini panqueques de arandanos",
+          "WG Bagel with Cream Cheese",
+          "Manzana Fresca",
+          "100% jugo de uva"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "NY Beef Burger",
+          "Cheeseburger",
+          "Veggie Burger on Bun",
+          "Oven Baked Fries",
+          "Diced Onion",
+          "Lettuce",
+          "Sliced Tomatoes",
+          "Celery Sticks",
+          "Pineapple",
+          "100% Orange Tangerine"
+        ],
+        "es": [
+          "NY Beef Burger",
+          "Hamburguesa con Queso",
+          "Veggie Burger on Bun",
+          "Papas fritas al horno",
+          "Rebanadas de Cebolla",
+          "Lechuga",
+          "Tomates en Rodajas",
+          "Palitos de Apio",
+          "Pina",
+          "100% Naranja Mandarina"
+        ]
+      }
+    },
+    "Brookside": {
+      "breakfast": {
+        "en": [
+          "Cheerios Cereal",
+          "WG Honey Bear",
+          "Graham Crackers",
+          "Sliced Oranges",
+          "100% Juice Fruit Punch",
+          "Unflavored 1% Milk"
+        ],
+        "es": [
+          "Cheerios",
+          "Galletas de Ositos de Vainilla",
+          "Naranja en Rodajas",
+          "Fruit Punch",
+          "Unflavored Leche 1%"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Classic Cheese Pizza",
+          "Pepperoni Pizza",
+          "Roasted Butternut Squash",
+          "Side Garden Salad",
+          "Applesauce",
+          "Apple Slices"
+        ],
+        "es": [
+          "Pizza de Queso",
+          "Pizza De Peperoni",
+          "pizza de queso cubierta con peperoni",
+          "Calabaza Butternut Asada",
+          "Ensalada Fresca De Jardin",
+          "Pure de Manzana",
+          "Rebanadas De Manazanas"
+        ]
+      }
+    },
+    "Claremont": {
+        "breakfast": {
+          "en": [
+            "Cheerios Cereal",
+            "WG Honey Bear",
+            "Graham Crackers",
+            "Sliced Oranges",
+            "100% Juice Fruit Punch",
+            "Unflavored 1% Milk"
+          ],
+          "es": [
+            "Cheerios",
+            "Galletas de Ositos de Vainilla",
+            "Naranja en Rodajas",
+            "Fruit Punch",
+            "Unflavored Leche 1%"
+          ]
+        },
+        "lunch": {
+          "en": [
+            "Classic Cheese Pizza",
+            "Pepperoni Pizza",
+            "Roasted Butternut Squash",
+            "Side Garden Salad",
+            "Applesauce",
+            "Apple Slices"
+          ],
+          "es": [
+            "Pizza de Queso",
+            "Pizza De Peperoni",
+            "pizza de queso cubierta con peperoni",
+            "Calabaza Butternut Asada",
+            "Ensalada Fresca De Jardin",
+            "Pure de Manzana",
+            "Rebanadas De Manazanas"
+          ]
+        }
+      },
+    "OHS": {
+      "breakfast": {
+        "en": [
+          "Bacon, Egg and Cheese Breakfast Sandwich",
+          "Turkey Bacon",
+          "Fresh Banana",
+          "100% Grape Juice"
+        ],
+        "es": [
+          "Sandwich de Huevo,",
+          "Tocino y Queso",
+          "Tocino de Pavo",
+          "Banana Fresca",
+          "100% jugo de uva"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Chicken Delight Wrap",
+          "Ham & Cheese Panini",
+          "Beef Swedish Meatballs",
+          "Pasta with Butter",
+          "Sauteed Zucchini",
+          "Dinner Rolls",
+          "Chicken Philly Cheesesteak Halal",
+          "Grilled Cheese",
+          "Baked Potato Wedges",
+          "NY Fruity Yogurt Parfait with Granola",
+          "Crispy Chicken",
+          "Garden Salad",
+          "Simply Boxed Egg Protein Pack",
+          "Fresh Apple",
+          "Romaine Lettuce",
+          "Mixed Kale Side Salad",
+          "Caramelized Apples with Tri-color Quinoa",
+          "Cucumber Coins",
+          "Garbanzo Beans",
+          "Grape Tomatoes",
+          "Hand Crafted Buffalo",
+          "Chicken Pizza",
+          "Cheese Pizza",
+          "Pepperoni Pizza"
+        ],
+        "es": [
+          "Tortilla de Delicia de Pollo",
+          "Panini de Jamon y Queso",
+          "Swedish Meatballs",
+          "Pasta Con Mantequilla",
+          "salteado de calabacin",
+          "Pollo Philly Cheesesteak Halal",
+          "Pan Tostado con",
+          "Rodajas de Papas Horneadas",
+          "purguesa de NY Fruity Yogurt Parfait with Granola",
+          "Ensalada De Pollo",
+          "Paquete de proteina de huevo",
+          "simplemente en caja",
+          "cluye Rollo Integral y Manzana Fresca",
+          "Lechuga",
+          "Ensalada de Kale",
+          "Manzanas",
+          "caramelizadas con tres colores Quinoa",
+          "Rodajas de Pepinos Garbanzos",
+          "Tomates Pequenos",
+          "Pizza de Pollo al Bufalo",
+          "Pizza de Queso",
+          "Pizza de Pepperoni"
+        ]
+      }
+    },
+    "Park": {
+      "breakfast": {
+        "en": [
+          "Cheerios Cereal",
+          "WG Honey Bear",
+          "Graham Crackers",
+          "Sliced Oranges",
+          "100% Juice Fruit Punch",
+          "Unflavored 1% Milk"
+        ],
+        "es": [
+          "Cheerios",
+          "Galletas de Ositos de Vainilla",
+          "Naranja en Rodajas",
+          "Fruit Punch",
+          "Unflavored Leche 1%"
+        ]
+      },
+      "lunch": {
+        "en": [
+          "Classic Cheese Pizza",
+          "Ham & Cheese Sandwich",
+          "Roasted Butternut Squash",
+          "Broccoli Florets",
+          "Spinach Salad",
+          "Apple Slices",
+          "Sliced Oranges"
+        ],
+        "es": [
+          "Pizza de Queso",
+          "Sandwich de Jamon y Queso",
+          "Calabaza Butternut Asada",
+          "Brocoli",
+          "Ensalada de Espinaca",
+          "ebanadas De Manazanas",
+          "Naranja en Rodajas"
+        ]
+      }
+    },
+    "Roosevelt": {
+        "breakfast": {
+          "en": [
+            "Cheerios Cereal",
+            "WG Honey Bear",
+            "Graham Crackers",
+            "Sliced Oranges",
+            "100% Juice Fruit Punch",
+            "Unflavored 1% Milk"
+          ],
+          "es": [
+            "Cheerios",
+            "Galletas de Ositos de Vainilla",
+            "Naranja en Rodajas",
+            "Fruit Punch",
+            "Unflavored Leche 1%"
+          ]
+        },
+        "lunch": {
+          "en": [
+            "Classic Cheese Pizza",
+            "Pepperoni Pizza",
+            "Roasted Butternut Squash",
+            "Side Garden Salad",
+            "Applesauce",
+            "Apple Slices"
+          ],
+          "es": [
+            "Pizza de Queso",
+            "Pizza De Peperoni",
+            "pizza de queso cubierta con peperoni",
+            "Calabaza Butternut Asada",
+            "Ensalada Fresca De Jardin",
+            "Pure de Manzana",
+            "Rebanadas De Manazanas"
+          ]
+        }
+      }
+  }
+}

@@ -4,9 +4,9 @@
  */
 
 export const VERSION_INFO = {
-  version: '2.2.0',
-  releaseDate: '2025-11-16',
-  codename: 'Universal Widgets',
+  version: '2.4.0',
+  releaseDate: '2026-01-04',
+  codename: 'Android Widget Removal',
   buildNumber: Date.now()
 }
 
@@ -25,6 +25,27 @@ export interface ReleaseNote {
 }
 
 export const RELEASE_NOTES: ReleaseNote[] = [
+  {
+    version: '2.4.0',
+    date: '2026-01-04',
+    codename: 'Android Widget Removal',
+    codenameEs: 'Eliminación del Widget de Android',
+    type: 'minor',
+    features: [
+      'Removed all Android widget functionality and references from the site and setup page.'
+    ],
+    featuresEs: [
+      'Se eliminaron todas las funciones y referencias del widget de Android del sitio y la página de configuración.'
+    ],
+    improvements: [
+      'Updated documentation and translations to reflect the removal of Android widget support.'
+    ],
+    improvementsEs: [
+      'Documentación y traducciones actualizadas para reflejar la eliminación del soporte para el widget de Android.'
+    ],
+    fixes: [],
+    fixesEs: []
+  },
   {
     version: '2.3.0',
     date: '2025-12-02',
