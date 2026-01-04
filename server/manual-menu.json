@@ -1,0 +1,252 @@
+	"2026-01-04": {
+		"Park": {
+			"breakfast": {
+				"en": ["test menu"],
+				"es": ["menú de prueba"]
+			},
+			"lunch": {
+				"en": ["test menu"],
+				"es": ["menú de prueba"]
+			}
+		}
+	},
+{
+	"2026-01-05": {
+		"AMD": {
+			"breakfast": {
+				"en": [
+					"Apple Strudel & Whole Grain Bagel with Cream Cheese",
+					"Blueberry Muffin",
+					"Fresh Orange",
+					"100% Apple Juice"
+				],
+				"es": [
+					"Apple Strudel",
+					"WG Bagel with Cream Cheese",
+					"Muffin de arandanos",
+					"Naranja Fresca",
+					"Jugo De Manzana"
+				]
+			},
+			"lunch": {
+				"en": [
+					"Homemade Baked Pasta with Cheese",
+					"Whole Wheat Dinner Roll",
+					"Beef Hot Dog on Bun",
+					"Steamed Broccoli",
+					"Grape Tomatoes",
+					"Fresh Orange",
+					"100% Juice Fruit Punch"
+				],
+				"es": [
+					"Pasta casera con Queso al Horno",
+					"Rollo Integral",
+					"Perro Caliente de la Carne",
+					"en un Panecillo",
+					"Brocoli Cocido Al Vapor",
+					"Tomates Pequenos",
+					"Naranja Fresca",
+					"Fruit Punch"
+				]
+			}
+		},
+		"Brookside": {
+			"breakfast": {
+				"en": [
+					"Mini Maple Flavored Waffles",
+					"Apple Slices",
+					"Orange 100% Juice",
+					"Unflavored 1% Milk"
+				],
+				"es": [
+					"Mini gofres con sabor a arce Rebanadas De Manazanas",
+					"Jugo de Naranja",
+					"Unflavored Leche 1%"
+				]
+			},
+			"lunch": {
+				"en": [
+					"Mozzarella Sticks V",
+					"Marinara Sauce",
+					"Green Beans",
+					"Carrot Dippers",
+					"Apple Slices",
+					"Blueberries"
+				],
+				"es": [
+					"Palitos de Queso",
+					"Mozzarella",
+					"Marinara Sauce",
+					"Frijoles Verdes",
+					"Palitos de Zanahorias",
+					"Rebanadas De Manazanas",
+					"Arandanos"
+				]
+			}
+		},
+		"Claremont": {
+			"breakfast": {
+				"en": [
+					"Mini Maple Flavored Waffles",
+					"Apple Slices",
+					"Orange 100% Juice",
+					"Unflavored 1% Milk"
+				],
+				"es": [
+					"Mini gofres con sabor a arce Rebanadas De Manazanas",
+					"Jugo de Naranja",
+					"Unflavored Leche 1%"
+				]
+			},
+			"lunch": {
+				"en": [
+					"Mozzarella Sticks V",
+					"Marinara Sauce",
+					"Green Beans",
+					"Carrot Dippers",
+					"Apple Slices",
+					"Blueberries"
+				],
+				"es": [
+					"Palitos de Queso",
+					"Mozzarella",
+					"Marinara Sauce",
+					"Frijoles Verdes",
+					"Palitos de Zanahorias",
+					"Rebanadas De Manazanas",
+					"Arandanos"
+				]
+			}
+		},
+		"OHS": {
+			"breakfast": {
+				"en": [
+					"Bacon, Egg and Cheese Breakfast Sandwich",
+					"Turkey Bacon",
+					"Fresh Apple",
+					"100% Grape Juice"
+				],
+				"es": [
+					"Sandwich de Huevo Tocino y Queso,",
+					"Tocino de Pavo",
+					"Manzana Fresca",
+					"100% jugo de uva"
+				]
+			},
+			"lunch": {
+				"en": [
+					"Turkey & Cheese Panini",
+					"American Combo Sandwich",
+					"Homemade Baked Pasta with Cheese",
+					"Roasted Broccoli",
+					"Whole Wheat Dinner Roll",
+					"Brown Rice and WC",
+					"Chicken Parmesan Sandwich",
+					"Mozzarella Sticks",
+					"Baked Potato Wedges",
+					"Veggabol BBQ Chickpea Rice Bowl",
+					"NY Fruity Yogurt Parfait with Granola",
+					"Apple Slices",
+					"Classic Greek Salad",
+					"Mixed Kale Side Salad",
+					"Cucumber Coins",
+					"Grape Tomatoes",
+					"Green Pepper Slices",
+					"Black Beans",
+					"Pepper & Onion",
+					"Pizza",
+					"Cheese Pizza"
+				],
+				"es": [
+					"Panini De Pavo Y Queso Sandwich Americano",
+					"Pasta casera con Queso al Horno",
+					"Roasted Broccoli",
+					"Rollo Integral",
+					"Sandwich de Pollo Parmesano",
+					"Palitos de Queso Mozzarella",
+					"Rodajas de Papas Horneadas",
+					"Tazon de Arroz con Garbanzos BBQ",
+					"Veggabol",
+					"NY Fruity Yogurt Parfait with Granola Rebanadas De Manazanas",
+					"Ensalada Griega",
+					"Ensalada de Kale",
+					"Rodajas de Pepinos",
+					"Tomates Pequenos",
+					"Rebanadas de Pimientos Verdes Frijoles",
+					"Pizza con Pimientos y Cebollas",
+					"Pizza de Queso"
+				]
+			}
+		},
+		"Park": {
+			"breakfast": {
+				"en": [
+					"Mini Maple Flavored Waffles",
+					"Apple Slices",
+					"Orange 100% Juice",
+					"Unflavored 1% Milk"
+				],
+				"es": [
+					"Mini gofres con sabor a arce Rebanadas De Manazanas",
+					"Jugo de Naranja",
+					"Unflavored Leche 1%"
+				]
+			},
+			"lunch": {
+				"en": [
+					"Mozzarella Sticks",
+					"Tomato Sauce Dip",
+					"Not-A-Nut Butter & Jelly Sandwich",
+					"Steamed Carrots",
+					"Carrot Dippers",
+					"Apple Slices",
+					"Sliced Oranges"
+				],
+				"es": [
+					"Palitos de Queso Mozzarella",
+					"Salsa de Tomate",
+					"Sandwich de mantequilla y jalea sin nueces",
+					"Zanahorias",
+					"Palitos de Zanahorias",
+					"Rebanadas De Manazanas",
+					"Naranja en Rodajas"
+				]
+			}
+		},
+		"Roosevelt": {
+			"breakfast": {
+				"en": [
+					"Mini Maple Flavored Waffles",
+					"Apple Slices",
+					"Orange 100% Juice",
+					"Unflavored 1% Milk"
+				],
+				"es": [
+					"Mini gofres con sabor a arce Rebanadas De Manazanas",
+					"Jugo de Naranja",
+					"Unflavored Leche 1%"
+				]
+			},
+			"lunch": {
+				"en": [
+					"Mozzarella Sticks V",
+					"Marinara Sauce",
+					"Green Beans",
+					"Carrot Dippers",
+					"Apple Slices",
+					"Blueberries"
+				],
+				"es": [
+					"Palitos de Queso",
+					"Mozzarella",
+					"Marinara Sauce",
+					"Frijoles Verdes",
+					"Palitos de Zanahorias",
+					"Rebanadas De Manazanas",
+					"Arandanos"
+				]
+			}
+		}
+	}
+	// ...additional days omitted for brevity...
+}

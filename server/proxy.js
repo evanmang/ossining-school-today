@@ -7,6 +7,17 @@ try{
   fetchImpl = require('node-fetch')
 }
 const { parseEntry } = require('./fdparser')
+const path = require('path')
+const fs = require('fs')
+// Load manual menu fallback JSON
+let MANUAL_MENU = {}
+try {
+  const manualPath = path.join(__dirname, 'manual-menu.json')
+  MANUAL_MENU = JSON.parse(fs.readFileSync(manualPath, 'utf8'))
+  console.log('[proxy] Loaded manual menu fallback data')
+} catch (e) {
+  console.warn('[proxy] Could not load manual menu fallback:', e)
+}
 const app = express()
 const PORT = process.env.PORT || 4000
 
@@ -57,46 +68,70 @@ app.get('/fdmenu', async (req, res) => {
     // retry/backoff
     let attempt = 0
     let json = null
+    let resp = null
     const maxAttempts = 3
+    let upstreamOk = false
     while(attempt < maxAttempts){
       attempt++
       try{
         // add a timeout to avoid hanging on slow upstream
         const controller = new AbortController()
         const timeout = setTimeout(()=> controller.abort(), 8000)
-  // forward Accept-Language if provided by client; fallback to generic Accept header
-  const headers = { accept: 'application/json', 'x-requested-with':'XMLHttpRequest' }
-  if(lang) headers['Accept-Language'] = String(lang)
-    console.log('[proxy] Forwarding headers to upstream:', headers)
-  const resp = await fetchImpl(url, { headers, signal: controller.signal })
+        const headers = { accept: 'application/json', 'x-requested-with':'XMLHttpRequest' }
+        if(lang) headers['Accept-Language'] = String(lang)
+        console.log('[proxy] Forwarding headers to upstream:', headers)
+        resp = await fetchImpl(url, { headers, signal: controller.signal })
         clearTimeout(timeout)
         console.log(`[proxy] upstream responded: ${resp.status} ${resp.statusText} (attempt ${attempt})`)
-        if(!resp.ok) {
-          if(attempt >= maxAttempts) return res.status(502).json({error:'upstream', status: resp.status})
-          // backoff before retrying
+        if(resp.ok) {
+          json = await resp.json()
+          upstreamOk = true
+          break
+        } else {
+          if(attempt >= maxAttempts) break
           await new Promise(r=>setTimeout(r, 250 * attempt))
-          continue
         }
-        json = await resp.json()
-        console.log('[proxy] Received JSON from upstream')
-        break
       }catch(fetchErr){
         console.warn(`[proxy] fetch attempt ${attempt} failed:`, String(fetchErr))
-        if(attempt >= maxAttempts) throw fetchErr
+        if(attempt >= maxAttempts) break
         await new Promise(r=>setTimeout(r, 300 * attempt))
       }
     }
 
-  const entry = json?.result?.[0] || {}
-  const items = parseEntry(entry, lang || 'en')
-    if(items.length === 0) console.log('[proxy] No menu items found; returning empty list')
-    console.log(`[proxy] Returning ${items.length} items`)
-    // cache result
-    try{ CACHE[cacheKey] = { ts: Date.now(), items } }catch(_){ }
-    res.json({ items })
+    let items = []
+    if(upstreamOk && json){
+      const entry = json?.result?.[0] || {}
+      items = parseEntry(entry, lang || 'en')
+      if(items.length > 0){
+        console.log(`[proxy] Returning ${items.length} items from upstream`)
+        try{ CACHE[cacheKey] = { ts: Date.now(), items } }catch(_){ }
+        return res.json({ items })
+      }
+      console.log('[proxy] No menu items found from upstream, will try manual fallback')
+    } else {
+      console.log('[proxy] Upstream not OK, will try manual fallback')
+    }
+
+    // Manual fallback
+    const dateKey = date.toISOString().slice(0,10)
+    const school = req.query.school || ''
+    const meal = req.query.meal || ''
+    // Try to match by date, school, meal, lang
+    let fallbackItems = []
+    if(MANUAL_MENU[dateKey] && MANUAL_MENU[dateKey][school] && MANUAL_MENU[dateKey][school][meal] && MANUAL_MENU[dateKey][school][meal][lang]){
+      fallbackItems = MANUAL_MENU[dateKey][school][meal][lang]
+    } else if(MANUAL_MENU[dateKey] && MANUAL_MENU[dateKey][school] && MANUAL_MENU[dateKey][school][meal] && MANUAL_MENU[dateKey][school][meal]['en']){
+      fallbackItems = MANUAL_MENU[dateKey][school][meal]['en']
+    }
+    if(fallbackItems.length > 0){
+      console.log(`[proxy] Returning ${fallbackItems.length} items from manual fallback for ${school} ${meal} ${dateKey}`)
+      return res.json({ items: fallbackItems })
+    }
+    // If no fallback, return empty
+    console.log('[proxy] No menu items found in manual fallback either')
+    return res.json({ items: [] })
   }catch(err){
     console.error('[proxy] fetch error', err)
-    console.error(err)
     res.status(500).json({error:'internal', detail: String(err)})
   }
 })

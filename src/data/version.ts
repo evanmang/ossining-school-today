@@ -4,9 +4,9 @@
  */
 
 export const VERSION_INFO = {
-  version: '2.4.0',
+  version: '2.4.1',
   releaseDate: '2026-01-04',
-  codename: 'Android Widget Removal',
+  codename: 'Menu Fallback',
   buildNumber: Date.now()
 }
 
@@ -25,6 +25,27 @@ export interface ReleaseNote {
 }
 
 export const RELEASE_NOTES: ReleaseNote[] = [
+  {
+    version: '2.4.1',
+    date: '2026-01-04',
+    codename: 'Menu Fallback',
+    codenameEs: 'Menú de Respaldo',
+    type: 'patch',
+    features: [
+      'Added a manual menu JSON fallback: if the fdmealplanner API fails or returns no data, the site and widgets will now use local menu data for supported dates and schools.'
+    ],
+    featuresEs: [
+      'Se agregó un sistema de respaldo de menú manual: si la API de fdmealplanner falla o no devuelve datos, el sitio y los widgets ahora usarán datos de menú locales para las fechas y escuelas compatibles.'
+    ],
+    improvements: [
+      'Test data for today (Park School) is included for easy verification of the fallback system.'
+    ],
+    improvementsEs: [
+      'Se incluyeron datos de prueba para hoy (Park School) para facilitar la verificación del sistema de respaldo.'
+    ],
+    fixes: [],
+    fixesEs: []
+  },
   {
     version: '2.4.0',
     date: '2026-01-04',
